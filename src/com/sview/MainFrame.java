@@ -35,7 +35,7 @@ public class MainFrame extends JFrame{
         ProfilePanel profilePanel = new ProfilePanel();
         
         mainTabbedPane.add("Profil Pengguna",   profilePanel);
-        mainTabbedPane.add("Daftar Makanan" , new JPanel());
+        mainTabbedPane.add("Daftar Makanan" , new BahanMakananPanel());
         mainPanel.add(mainTabbedPane, BorderLayout.CENTER);
     }
     
