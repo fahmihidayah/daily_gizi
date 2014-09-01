@@ -23,34 +23,52 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author fahmi
  */
-public class BahanMakananPanel extends JPanel{
+public class BahanMakananPanel extends JPanel {
+
     private JTextField textFieldCari;
     private JComboBox<String> comboBoxKategori;
     private JTable tableBahanMakanan = new JTable();
-    
+    private CustomTableModel<BahanMakanan> customTableModel;
     private BahanMakananController bahanMakananController;
+
+    private String kategori[] = {"Id Makanan","Nama Makanan", "Golongan"};
     
-    public BahanMakananPanel() {
+    public BahanMakananPanel(BahanMakananController bahanMakananController) {
         super(new BorderLayout());
-        try {
-            bahanMakananController = new BahanMakananController();
-        } catch (SQLException ex) {
-            Logger.getLogger(BahanMakananPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.bahanMakananController = bahanMakananController;
         add(getCariPanel(), BorderLayout.NORTH);
         add(getTableMakananPanel(), BorderLayout.CENTER);
         add(getAddButtonPanel(), BorderLayout.SOUTH);
     }
-    
-    private JPanel getCariPanel(){
+
+    private JPanel getCariPanel() {
         JPanel panel = PanelUtilities.getSpringPanel();
         textFieldCari = new JTextField();
-        String kategori [] = {"Nama Makanan", "Golongan"};
+        textFieldCari.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                customTableModel.filter(textFieldCari.getText(), comboBoxKategori.getSelectedIndex());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                customTableModel.filter(textFieldCari.getText(), comboBoxKategori.getSelectedIndex());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                customTableModel.filter(textFieldCari.getText(), comboBoxKategori.getSelectedIndex());
+            }
+        });
+        
         comboBoxKategori = new JComboBox<>(kategori);
         panel.add(new JLabel("Kategori"));
         panel.add(comboBoxKategori);
@@ -59,36 +77,36 @@ public class BahanMakananPanel extends JPanel{
         SpringUtilities.makeGrid(panel, 2, 2, 5, 5, 5, 5);
         return panel;
     }
-    
-    private JPanel getTableMakananPanel(){
-        JPanel panel = new JPanel(new BorderLayout());
-        CustomTableModel<BahanMakanan> customTableModel = new CustomTableModel<BahanMakanan>() {
 
+    private JPanel getTableMakananPanel() {
+        JPanel panel = new JPanel(new BorderLayout());
+        customTableModel = new CustomTableModel<BahanMakanan>() {
             @Override
             public Object getDataItem(BahanMakanan data, int column) {
-                if(column == 0){
-                    return  data.getIdBahanMakanan();
+                if (column == 0) {
+                    return data.getIdBahanMakanan();
+                } else if(column == 1) {
+                    return data.getNamaBahanMakanan();
                 }
                 else {
-                    return data.getNamaBahanMakanan();
+                    return data.getGolongan().getNamaGolongan();
                 }
             }
         };
-        String columnName[]= {"Id Makanan", "Nama Makanan"};
+        String columnName[] = kategori;
         customTableModel.setColumnName(columnName);
         customTableModel.setListData(bahanMakananController.getListBahanMakanan());
-        
         tableBahanMakanan = new JTable(customTableModel);
+        customTableModel.createRowSorter(tableBahanMakanan);
         JScrollPane jScrollPane = new JScrollPane(tableBahanMakanan);
         panel.add(jScrollPane);
         return panel;
     }
-    
-    private JPanel getAddButtonPanel(){
+
+    private JPanel getAddButtonPanel() {
         JPanel panel = new JPanel(new BorderLayout());
         JButton buttonAdd = new JButton("Tambah");
         buttonAdd.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showConfirmDialog(null, "cobha", "heyy?", JOptionPane.YES_NO_OPTION);
@@ -97,6 +115,4 @@ public class BahanMakananPanel extends JPanel{
         panel.add(buttonAdd, BorderLayout.CENTER);
         return panel;
     }
-    
-    
 }
