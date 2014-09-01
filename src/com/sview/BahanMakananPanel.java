@@ -39,7 +39,7 @@ public class BahanMakananPanel extends JPanel {
     private CustomTableModel<BahanMakanan> customTableModel;
     private BahanMakananController bahanMakananController;
 
-    private String kategori[] = {"Id Makanan","Nama Makanan", "Golongan"};
+    private String kategori[] = {"Id Makanan","Nama Makanan", "Satuan Urt", "Satuan Penukar", "Berat Satuan Urt", "Golongan", "Karbohidrat", "Protein", "Kalori", "Lemak"};
     
     public BahanMakananPanel(BahanMakananController bahanMakananController) {
         super(new BorderLayout());
@@ -88,8 +88,29 @@ public class BahanMakananPanel extends JPanel {
                 } else if(column == 1) {
                     return data.getNamaBahanMakanan();
                 }
-                else {
+                else if(column == 2){
+                    return data.getSatuanUrt();
+                }
+                else if(column == 3){
+                    return data.getSatuanPenukar();
+                }
+                else if(column == 4){
+                    return data.getBeratSatuanUrt();
+                }
+                else if(column == 5){
                     return data.getGolongan().getNamaGolongan();
+                }
+                else if(column == 6){
+                    return data.getKarbohidrat();
+                }
+                else if(column == 7){
+                    return data.getProtein();
+                }
+                else if(column == 8){
+                    return data.getKalori();
+                }
+                else{
+                    return data.getLemak();
                 }
             }
         };
