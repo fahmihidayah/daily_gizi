@@ -26,7 +26,7 @@ public class ProfilePanel extends JPanel {
 
     private ProfilUser profilUser ;
     
-    public ProfilePanel(ProfilUser profilUser) {
+    public ProfilePanel(final ProfilUser profilUser) {
         super(new SpringLayout());
         labelNama = new JLabel("Nama ");
         labelBeratBadan = new JLabel("Berat Badan ");
@@ -39,7 +39,7 @@ public class ProfilePanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                EditProfileFrame editProfileFrame = new EditProfileFrame();
+                EditProfileFrame editProfileFrame = new EditProfileFrame(profilUser);
             }
         });
         

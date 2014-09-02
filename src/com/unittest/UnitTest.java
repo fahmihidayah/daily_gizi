@@ -33,7 +33,7 @@ public class UnitTest {
 //            bahanMakanan.setNamaBahanMakanan("Anggur");
 //            bahanMakananController.createBahanMakanan(bahanMakanan);
             List<BahanMakanan> listBahanMakanan = bahanMakananController.getListBahanMakanan();
-            System.out.println(listBahanMakanan.size());
+            System.out.println(bahanMakananController.getListStringGolongan()[0]);
             for (BahanMakanan bahanMakanan1 : listBahanMakanan) {
                 System.out.println(bahanMakanan1.getNamaBahanMakanan() + bahanMakanan1.getGolongan().getNamaGolongan());
             }

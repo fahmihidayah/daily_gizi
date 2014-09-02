@@ -99,5 +99,12 @@ public class BahanMakananController implements Constants {
         this.listGolongan = listGolongan;
     }
     
+    public Object[] getListStringGolongan(){
+        ArrayList<String> listString = new ArrayList<>();
+        for (Golongan gol : listGolongan) {
+            listString.add(gol.getNamaGolongan());
+        }
+        return listString.toArray();
+    }
     
 }

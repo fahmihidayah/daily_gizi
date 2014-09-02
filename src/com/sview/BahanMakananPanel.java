@@ -8,6 +8,7 @@ import com.controller.BahanMakananController;
 import com.framework.CustomTableModel;
 import com.framework.PanelUtilities;
 import com.model.BahanMakanan;
+import com.model.Constants;
 import com.oracle_source.layout.SpringUtilities;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -31,7 +32,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author fahmi
  */
-public class BahanMakananPanel extends JPanel {
+public class BahanMakananPanel extends JPanel implements Constants{
 
     private JTextField textFieldCari;
     private JComboBox<String> comboBoxKategori;
@@ -130,7 +131,7 @@ public class BahanMakananPanel extends JPanel {
         buttonAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showConfirmDialog(null, "cobha", "heyy?", JOptionPane.YES_NO_OPTION);
+                SimpanBahanMakananFrame bahanMakananFrame = new SimpanBahanMakananFrame(bahanMakananController, INSERT_MODE, -1);
             }
         });
         panel.add(buttonAdd, BorderLayout.CENTER);
