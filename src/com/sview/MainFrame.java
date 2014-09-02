@@ -51,6 +51,7 @@ public class MainFrame extends JFrame{
         
         mainTabbedPane.add("Profil Pengguna",  new ProfilePanel(profilUser));
         mainTabbedPane.add("Daftar Makanan" , new BahanMakananPanel(bahanMakananController));
+        mainTabbedPane.add("Analisa Konsumsi Kalori Hari ini", new JPanel());
         mainPanel.add(mainTabbedPane, BorderLayout.CENTER);
     }
     
