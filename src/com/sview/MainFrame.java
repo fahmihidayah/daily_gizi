@@ -5,6 +5,7 @@
 package com.sview;
 
 import com.controller.BahanMakananController;
+import com.controller.MakanDikonsumsiController;
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
 import com.view.ProfilPanel;
@@ -26,6 +27,7 @@ public class MainFrame extends JFrame{
     private JPanel mainPanel;
     
     private BahanMakananController bahanMakananController;
+    private MakanDikonsumsiController makanDikonsumsiController;
     private ProfilUser profilUser;
 
     public MainFrame()  {
@@ -35,6 +37,7 @@ public class MainFrame extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         try {
             bahanMakananController = new BahanMakananController();
+            makanDikonsumsiController = new MakanDikonsumsiController();
         } catch (SQLException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,7 +54,7 @@ public class MainFrame extends JFrame{
         
         mainTabbedPane.add("Profil Pengguna",  new ProfilePanel(profilUser));
         mainTabbedPane.add("Daftar Makanan" , new BahanMakananPanel(bahanMakananController));
-        mainTabbedPane.add("Analisa Konsumsi Kalori Hari ini", new JPanel());
+        mainTabbedPane.add("Analisa Konsumsi Kalori Hari ini", new AnalisaKaloriPanel(bahanMakananController, makanDikonsumsiController, profilUser));
         mainPanel.add(mainTabbedPane, BorderLayout.CENTER);
     }
     
