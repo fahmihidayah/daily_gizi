@@ -6,6 +6,8 @@ package com.sview;
 
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Action;
@@ -27,14 +29,31 @@ public class ProfilePanel extends JPanel {
     private ProfilUser profilUser ;
     
     public ProfilePanel(final ProfilUser profilUser) {
-        super(new SpringLayout());
+        super(new BorderLayout());
+        this.profilUser = profilUser;
+        add(getProfilePanel(), BorderLayout.CENTER);
+        add(getButtonPanel(), BorderLayout.SOUTH);
+    }
+
+    private JPanel getProfilePanel(){
+        JPanel panel = new JPanel(new SpringLayout());
         labelNama = new JLabel("Nama ");
         labelBeratBadan = new JLabel("Berat Badan ");
         labelJenisKelamin = new JLabel("Jenis Kelamin");
         labelTinggiBadan = new JLabel("Tinggi Badan");
         labelUmur = new JLabel("Umur");
+        panel.add(labelNama);
+        panel.add(labelJenisKelamin);
+        panel.add(labelTinggiBadan);
+        panel.add(labelBeratBadan);
+        panel.add(labelUmur);
+        SpringUtilities.makeGrid(panel, 5, 1, 10, 10, 10, 10);   
+        return panel;
+    }
+    
+    public JPanel getButtonPanel(){
+        JPanel panel = new JPanel(new FlowLayout());
         buttonEdit = new JButton("Edit");
-        this.profilUser = profilUser;
         buttonEdit.addActionListener(new ActionListener() {
 
             @Override
@@ -42,16 +61,9 @@ public class ProfilePanel extends JPanel {
                 EditProfileFrame editProfileFrame = new EditProfileFrame(profilUser);
             }
         });
-        
-        add(labelNama);
-        add(labelJenisKelamin);
-        add(labelTinggiBadan);
-        add(labelBeratBadan);
-        add(labelUmur);
-        add(buttonEdit);
-        SpringUtilities.makeGrid(this, 6, 1, 10, 10, 10, 10);    
+        panel.add(buttonEdit);
+        return panel;
     }
-
     public ProfilUser getProfilUser() {
         return profilUser;
     }

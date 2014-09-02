@@ -28,7 +28,7 @@ public class MainFrame extends JFrame{
     
     private BahanMakananController bahanMakananController;
     private MakanDikonsumsiController makanDikonsumsiController;
-    private ProfilUser profilUser;
+    private ProfilUser profilUser = new ProfilUser();
 
     public MainFrame()  {
         setTitle("Manajemen Gizi Harian Untuk Penderita Diabetes");

@@ -8,6 +8,7 @@ import com.framework.PanelUtilities;
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,11 +29,10 @@ public class EditProfileFrame extends JFrame {
 
     private JTextField textFieldNama, textFieldTinggiBadan, textFieldBeratBadan, textFieldUmur;
     private JComboBox<String> comboBoxJenisKelamin;
-    private String [] jenisKelamin = {"Laki-Laki", "Perempuan"};
+    private String[] jenisKelamin = {"Laki-Laki", "Perempuan"};
     private JButton buttonSave;
-    
     private ProfilUser profilUser;
-    
+
     private void initialComponent() {
         textFieldBeratBadan = new JTextField();
         textFieldNama = new JTextField();
@@ -48,41 +48,57 @@ public class EditProfileFrame extends JFrame {
         setSize(300, 250);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
-        settingComponent();
-       
-    }
-    
-    private void settingComponent(){
         initialComponent();
-        JPanel mainPanel = PanelUtilities.getSpringPanel();
-        
-        mainPanel.add(new JLabel("Nama"));
-        mainPanel.add(textFieldNama);
-        mainPanel.add(new JLabel("Jenis Kelamin"));
-        mainPanel.add(comboBoxJenisKelamin);
-        mainPanel.add(new JLabel("Berat Badan"));
-        mainPanel.add(textFieldBeratBadan);
-        mainPanel.add(new JLabel("Tinggi Badan"));
-        mainPanel.add(textFieldTinggiBadan);
-        mainPanel.add(new JLabel("Umur"));
-        mainPanel.add(textFieldUmur);
-        mainPanel.add(buttonSave);
-        buttonSave.addActionListener(new ActionListener() {
+        getInputPanel();
+        add(getMainPanel());
+    }
 
+    private JPanel getMainPanel() {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(getInputPanel(), BorderLayout.CENTER);
+        panel.add(getButtonPanel(), BorderLayout.SOUTH);
+        return panel;
+    }
+
+    private JPanel getInputPanel() {
+        JPanel panel = PanelUtilities.getSpringPanel();
+
+        panel.add(new JLabel("Nama"));
+        panel.add(textFieldNama);
+        panel.add(new JLabel("Jenis Kelamin"));
+        panel.add(comboBoxJenisKelamin);
+        panel.add(new JLabel("Berat Badan"));
+        panel.add(textFieldBeratBadan);
+        panel.add(new JLabel("Tinggi Badan"));
+        panel.add(textFieldTinggiBadan);
+        panel.add(new JLabel("Umur"));
+        panel.add(textFieldUmur);
+        SpringUtilities.makeGrid(panel, 5, 2, 5, 5, 5, 5);
+        return panel;
+    }
+
+    private JPanel getButtonPanel() {
+        JPanel panel = new JPanel(new FlowLayout());
+        panel.add(buttonSave);
+        buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                profilUser.setNama(textFieldNama.getText());
-                profilUser.setBeratBadan(Double.parseDouble(textFieldBeratBadan.getText()));
-                profilUser.setJenisKelamin(comboBoxJenisKelamin.getSelectedItem().toString());
-                profilUser.setTinggiBadan(Double.parseDouble(textFieldTinggiBadan.getText()));
-                profilUser.setUmur(Integer.parseInt(textFieldUmur.getText()));
-                JOptionPane.showConfirmDialog(null, "Sukses edit user", "Pesan", JOptionPane.OK_OPTION);
+                if (profilUser == null) {
+                    profilUser = new ProfilUser();
+                }
+                try {
+                    profilUser.setNama(textFieldNama.getText());
+                    profilUser.setBeratBadan(Double.parseDouble(textFieldBeratBadan.getText()));
+                    profilUser.setJenisKelamin(comboBoxJenisKelamin.getSelectedItem().toString());
+                    profilUser.setTinggiBadan(Double.parseDouble(textFieldTinggiBadan.getText()));
+                    profilUser.setUmur(Integer.parseInt(textFieldUmur.getText()));
+                    JOptionPane.showConfirmDialog(null, "Sukses edit user", "Pesan", JOptionPane.OK_OPTION);
+                }catch(Exception ex){
+                    JOptionPane.showConfirmDialog(null, "Kesalahan input data", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
         });
-        mainPanel.add(new JPanel());
-        SpringUtilities.makeGrid(mainPanel, 6, 2, 5, 5, 5, 5);
-        add(mainPanel);
+        return panel;
     }
-    
-    
 }
