@@ -83,9 +83,9 @@ public class EditProfileFrame extends JFrame {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (profilUser == null) {
-                    profilUser = new ProfilUser();
-                }
+//                if (profilUser == null) {
+//                    profilUser = new ProfilUser();
+//                }
                 try {
                     profilUser.setNama(textFieldNama.getText());
                     profilUser.setBeratBadan(Double.parseDouble(textFieldBeratBadan.getText()));
@@ -93,6 +93,8 @@ public class EditProfileFrame extends JFrame {
                     profilUser.setTinggiBadan(Double.parseDouble(textFieldTinggiBadan.getText()));
                     profilUser.setUmur(Integer.parseInt(textFieldUmur.getText()));
                     JOptionPane.showConfirmDialog(null, "Sukses edit user", "Pesan", JOptionPane.OK_OPTION);
+                    
+                    profilUser.notifyAllObserver();
                 }catch(Exception ex){
                     JOptionPane.showConfirmDialog(null, "Kesalahan input data", "Error", JOptionPane.ERROR_MESSAGE);
                 }

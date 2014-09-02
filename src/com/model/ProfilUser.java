@@ -5,13 +5,14 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.Observable;
 
 /**
  *
  * @author fahmi
  * 
  */
-public class ProfilUser implements Serializable{
+public class ProfilUser extends Observable implements Serializable{
 
     private String nama;
     private String jenisKelamin;
@@ -152,5 +153,10 @@ public class ProfilUser implements Serializable{
             }
         }
         setKaloriHarian(kaloriHarian);
+    }
+    
+    public void notifyAllObserver(){
+        setChanged();
+        notifyObservers();
     }
 }

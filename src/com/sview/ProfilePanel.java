@@ -10,6 +10,8 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,7 +23,7 @@ import javax.swing.SpringLayout;
  *
  * @author fahmi
  */
-public class ProfilePanel extends JPanel {
+public class ProfilePanel extends JPanel implements  Observer{
 
     private JLabel labelNama, labelJenisKelamin, labelTinggiBadan, labelBeratBadan, labelUmur;
     private JButton buttonEdit;
@@ -31,6 +33,7 @@ public class ProfilePanel extends JPanel {
     public ProfilePanel(final ProfilUser profilUser) {
         super(new BorderLayout());
         this.profilUser = profilUser;
+        profilUser.addObserver(this);
         add(getProfilePanel(), BorderLayout.CENTER);
         add(getButtonPanel(), BorderLayout.SOUTH);
     }
@@ -73,9 +76,18 @@ public class ProfilePanel extends JPanel {
     }
     
     public void setUserProfileToView(){
-        if(this.profilUser != null){
-            labelNama.setText(profilUser.getNama());
-        }
+//        if(this.profilUser != null){
+            labelNama.setText( "Nama : " + profilUser.getNama());
+            labelJenisKelamin.setText("Jenis Kelamin : " + profilUser.getJenisKelamin());
+            labelBeratBadan.setText("Berat Badan : " + profilUser.getBeratBadan() + " Kg");
+            labelTinggiBadan.setText("Tinggi Badan : " + profilUser.getTinggiBadan() + " Cm");
+            labelUmur.setText("Umur : " + profilUser.getUmur()+ " Tahun");
+//        }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        setUserProfileToView();
     }
     
 }
