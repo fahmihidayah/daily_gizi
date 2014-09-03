@@ -6,9 +6,9 @@ package com.sview;
 
 import com.controller.BahanMakananController;
 import com.controller.MakanDikonsumsiController;
+import com.controller.ProfileController;
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
-import com.view.ProfilPanel;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
@@ -28,7 +28,7 @@ public class MainFrame extends JFrame{
     
     private BahanMakananController bahanMakananController;
     private MakanDikonsumsiController makanDikonsumsiController;
-    private ProfilUser profilUser = new ProfilUser();
+    private ProfileController profileController = new ProfileController();
 
     public MainFrame()  {
         setTitle("Manajemen Gizi Harian Untuk Penderita Diabetes");
@@ -51,9 +51,9 @@ public class MainFrame extends JFrame{
     private void setMainTabbedPane(){
         mainTabbedPane = new JTabbedPane();
         
-        mainTabbedPane.add("Profil Pengguna",  new ProfilePanel(profilUser));
+        mainTabbedPane.add("Profil Pengguna",  new ProfilePanel(profileController));
         mainTabbedPane.add("Daftar Makanan" , new BahanMakananPanel(bahanMakananController));
-        mainTabbedPane.add("Analisa Konsumsi Kalori Hari ini", new AnalisaKaloriPanel(bahanMakananController, makanDikonsumsiController, profilUser));
+        mainTabbedPane.add("Analisa Konsumsi Kalori Hari ini", new AnalisaKaloriPanel(bahanMakananController, makanDikonsumsiController, profileController));
         mainPanel.add(mainTabbedPane, BorderLayout.CENTER);
     }
     

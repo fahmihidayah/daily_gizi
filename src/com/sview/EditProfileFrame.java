@@ -4,6 +4,7 @@
  */
 package com.sview;
 
+import com.controller.ProfileController;
 import com.framework.PanelUtilities;
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
@@ -27,11 +28,11 @@ import javax.swing.SpringLayout;
  */
 public class EditProfileFrame extends JFrame {
 
-    private JTextField textFieldNama, textFieldTinggiBadan, textFieldBeratBadan, textFieldUmur;
-    private JComboBox<String> comboBoxJenisKelamin;
-    private String[] jenisKelamin = {"Laki-Laki", "Perempuan"};
+    public JTextField textFieldNama, textFieldTinggiBadan, textFieldBeratBadan, textFieldUmur;
+    public JComboBox<String> comboBoxJenisKelamin;
+    public String[] jenisKelamin = {"Laki-Laki", "Perempuan"};
     private JButton buttonSave;
-    private ProfilUser profilUser;
+    private ProfileController profilController;
 
     private void initialComponent() {
         textFieldBeratBadan = new JTextField();
@@ -42,9 +43,9 @@ public class EditProfileFrame extends JFrame {
         buttonSave = new JButton("Simpan");
     }
 
-    public EditProfileFrame(ProfilUser profilUser) {
+    public EditProfileFrame(ProfileController profileController) {
         super("Edit Profile");
-        this.profilUser = profilUser;
+        this.profilController = profileController;
         setSize(300, 250);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
@@ -83,18 +84,8 @@ public class EditProfileFrame extends JFrame {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                if (profilUser == null) {
-//                    profilUser = new ProfilUser();
-//                }
                 try {
-                    profilUser.setNama(textFieldNama.getText());
-                    profilUser.setBeratBadan(Double.parseDouble(textFieldBeratBadan.getText()));
-                    profilUser.setJenisKelamin(comboBoxJenisKelamin.getSelectedItem().toString());
-                    profilUser.setTinggiBadan(Double.parseDouble(textFieldTinggiBadan.getText()));
-                    profilUser.setUmur(Integer.parseInt(textFieldUmur.getText()));
-                    JOptionPane.showConfirmDialog(null, "Sukses edit user", "Pesan", JOptionPane.OK_OPTION);
-                    
-                    profilUser.notifyAllObserver();
+                    profilController.setProfileUserFromView(EditProfileFrame.this);
                 }catch(Exception ex){
                     JOptionPane.showConfirmDialog(null, "Kesalahan input data", "Error", JOptionPane.ERROR_MESSAGE);
                 }

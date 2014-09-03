@@ -4,6 +4,7 @@
  */
 package com.sview;
 
+import com.controller.ProfileController;
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
 import java.awt.BorderLayout;
@@ -25,15 +26,16 @@ import javax.swing.SpringLayout;
  */
 public class ProfilePanel extends JPanel implements  Observer{
 
-    private JLabel labelNama, labelJenisKelamin, labelTinggiBadan, labelBeratBadan, labelUmur;
+    public JLabel labelNama, labelJenisKelamin, labelTinggiBadan, labelBeratBadan, labelUmur;
     private JButton buttonEdit;
 
-    private ProfilUser profilUser ;
+//    private ProfilUser profilUser ;
+    private ProfileController profileController;
     
-    public ProfilePanel(final ProfilUser profilUser) {
+    public ProfilePanel(ProfileController profileController) {
         super(new BorderLayout());
-        this.profilUser = profilUser;
-        profilUser.addObserver(this);
+        this.profileController = profileController;
+        profileController.addObserver(this);
         add(getProfilePanel(), BorderLayout.CENTER);
         add(getButtonPanel(), BorderLayout.SOUTH);
     }
@@ -61,28 +63,15 @@ public class ProfilePanel extends JPanel implements  Observer{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                EditProfileFrame editProfileFrame = new EditProfileFrame(profilUser);
+                EditProfileFrame editProfileFrame = new EditProfileFrame(profileController);
             }
         });
         panel.add(buttonEdit);
         return panel;
     }
-    public ProfilUser getProfilUser() {
-        return profilUser;
-    }
-
-    public void setProfilUser(ProfilUser profilUser) {
-        this.profilUser = profilUser;
-    }
     
     public void setUserProfileToView(){
-//        if(this.profilUser != null){
-            labelNama.setText( "Nama : " + profilUser.getNama());
-            labelJenisKelamin.setText("Jenis Kelamin : " + profilUser.getJenisKelamin());
-            labelBeratBadan.setText("Berat Badan : " + profilUser.getBeratBadan() + " Kg");
-            labelTinggiBadan.setText("Tinggi Badan : " + profilUser.getTinggiBadan() + " Cm");
-            labelUmur.setText("Umur : " + profilUser.getUmur()+ " Tahun");
-//        }
+        profileController.showProfileUserToView(this);
     }
 
     @Override

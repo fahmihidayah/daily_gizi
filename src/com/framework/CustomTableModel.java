@@ -98,11 +98,17 @@ public abstract class CustomTableModel<E> extends AbstractTableModel{
         table.setRowSorter(sorter);
         
     }
-    public void filter(String filer, int column) {
+    public void filter(Object filer, int column) {
         RowFilter<CustomTableModel, Object> rf = null;
         //If current expression doesn't parse, don't update.
         try {
-            rf = RowFilter.regexFilter(filer, column);
+            if(filer instanceof String){
+                String filterStr = (String) filer;
+                rf = RowFilter.regexFilter(filterStr, column);    
+            }else {
+                rf = RowFilter.regexFilter("", column);    
+            }
+            
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
         }
