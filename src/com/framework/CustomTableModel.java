@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -16,7 +17,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author fahmi
  */
-public abstract class CustomTableModel<E> implements TableModel {
+public abstract class CustomTableModel<E> extends AbstractTableModel{
 
     private List<E> listData;
     private String columnName[];

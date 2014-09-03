@@ -15,6 +15,7 @@ import com.model.Golongan;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,13 +23,15 @@ import java.util.logging.Logger;
  *
  * @author fahmi
  */
-public class BahanMakananController implements Constants {
+public class BahanMakananController extends Observable implements Constants {
 
     private JdbcConnectionSource jdbcConnectionSource;
     private Dao<BahanMakanan, Long> daoBahanMakanan;
     private Dao<Golongan, Long> daoGolongan;
     private List<BahanMakanan> listBahanMakanan = new ArrayList<>();
     private List<Golongan> listGolongan = new ArrayList<>();
+
+    private BahanMakanan editBahanMakanan = null;
     
     public BahanMakananController() throws SQLException {
         jdbcConnectionSource = new JdbcConnectionSource(databaseUrl);
@@ -44,6 +47,8 @@ public class BahanMakananController implements Constants {
         try {
             daoBahanMakanan.create(bahanMakanan);
             copyListBahanMakanan();
+            notifyAllObserver();
+//            listBahanMakanan.add(bahanMakanan);
         } catch (SQLException ex) {
             Logger.getLogger(BahanMakananController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -53,6 +58,7 @@ public class BahanMakananController implements Constants {
         try {
             daoBahanMakanan.update(bahanMakanan);
             copyListBahanMakanan();
+            notifyAllObserver();
         } catch (SQLException ex) {
             Logger.getLogger(BahanMakananController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -66,6 +72,7 @@ public class BahanMakananController implements Constants {
         try {
             daoBahanMakanan.deleteById(id);
             copyListBahanMakanan();
+            notifyAllObserver();
         } catch (SQLException ex) {
             Logger.getLogger(BahanMakananController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -78,13 +85,13 @@ public class BahanMakananController implements Constants {
     public void setListBahanMakanan(List<BahanMakanan> listBahanMakanan) {
         this.listBahanMakanan = listBahanMakanan;
     }
-    
-    public void copyListBahanMakanan() throws SQLException{
+
+    public void copyListBahanMakanan() throws SQLException {
         List<BahanMakanan> listBahanMakananTemp = readListBahanMakanan();
         this.listBahanMakanan.clear();
         this.listBahanMakanan.addAll(listBahanMakananTemp);
     }
-    
+
     public void copyListGolongan() throws SQLException {
         List<Golongan> listGolongan = daoGolongan.queryForAll();
         this.listGolongan.clear();
@@ -98,13 +105,33 @@ public class BahanMakananController implements Constants {
     public void setListGolongan(List<Golongan> listGolongan) {
         this.listGolongan = listGolongan;
     }
-    
-    public Object[] getListStringGolongan(){
+
+    public Object[] getListStringGolongan() {
         ArrayList<String> listString = new ArrayList<>();
         for (Golongan gol : listGolongan) {
             listString.add(gol.getNamaGolongan());
         }
         return listString.toArray();
     }
+
+    public BahanMakanan getEditBahanMakanan() {
+        return editBahanMakanan;
+    }
+
+    public void setEditBahanMakanan(BahanMakanan editBahanMakanan) {
+        this.editBahanMakanan = editBahanMakanan;
+    }
+
+    public void selectEditedBahanMakanan(Long id) {
+        try {
+            editBahanMakanan = daoBahanMakanan.queryForId(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(BahanMakananController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
+    public void notifyAllObserver() {
+        setChanged();
+        notifyObservers();
+    }
 }
