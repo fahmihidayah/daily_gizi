@@ -49,7 +49,7 @@ public class AnalisaKaloriPanel extends JPanel{
     
     private JPanel getTableMakananDikonsumsiPanel(){
         JPanel panel = new JPanel(new BorderLayout());
-        String [] columnName = {"Nama Makanan", "Jumlah"};
+        String [] columnName = {"Nama Makanan", "Jumlah" , "Waktu Makan" , "Total Karbohidrat", "Total Protein", "Total Kalori", "Total Lemak"};
         customTableModelMakananDikonsumsi = new CustomTableModel<MakananDiKonsumsi>() {
 
             @Override
@@ -57,13 +57,33 @@ public class AnalisaKaloriPanel extends JPanel{
                 if(column == 0){
                     return data.getBahanMakanan().getNamaBahanMakanan();
                 }
-                else {
+                else if (column == 1){
                     return data.getJumlah();
+                }
+                else if (column == 2){
+                    return data.getWaktuMakan();
+                }
+                else if (column == 3){
+                    return data.getKarbohidrat();
+                }
+                else if (column == 4){
+                    return data.getProtein();
+                }
+                else if (column == 5){
+                    return data.getKalori();
+                }
+                else if (column == 6){
+                    return data.getLemak();
+                }
+                else {
+                    return "";
                 }
             }
         };
         customTableModelMakananDikonsumsi.setColumnName(columnName);
         customTableModelMakananDikonsumsi.setListData(makanDikonsumsiController.getListMakananDikonsumsi());
+        tableMakananDikonsumsi = new JTable(customTableModelMakananDikonsumsi);
+        
         JScrollPane scrollPane = new JScrollPane(tableMakananDikonsumsi);
         panel.add(scrollPane, BorderLayout.CENTER);
         
@@ -72,7 +92,8 @@ public class AnalisaKaloriPanel extends JPanel{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showConfirmDialog(null, "Tambah", "Pesan", JOptionPane.OK_OPTION);
+//                JOptionPane.showConfirmDialog(null, "Tambah", "Pesan", JOptionPane.OK_OPTION);
+                SimpanMakananDikonsumsiFrame simpanMakananDikonsumsiFrame = new SimpanMakananDikonsumsiFrame(makanDikonsumsiController);
             }
         });
         JPanel flowPanel = new JPanel(new FlowLayout());

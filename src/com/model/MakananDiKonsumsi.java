@@ -106,7 +106,7 @@ public class MakananDiKonsumsi {
     /**
      * helper method untuk menghitung total kandungan gizi
      */
-    private void hitungTotalKandunganGizi(){
+    public void hitungTotalKandunganGizi(){
          this.karbohidrat = hitungKandungan(bahanMakanan.getKarbohidrat());
          this.protein = hitungKandungan(bahanMakanan.getProtein());
          this.lemak = hitungKandungan(bahanMakanan.getLemak());

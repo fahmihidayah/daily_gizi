@@ -23,16 +23,21 @@ import java.util.List;
 public class MakanDikonsumsiController {
     private JdbcConnectionSource jdbcConnectionSource;
     private Dao<BahanMakanan, Long> daoBahanMakanan;
+    private Dao<Golongan, Long> daoGolongan;
+    
     private List<BahanMakanan> listBahanMakanan;
+    private List<Golongan> listGolongan;
     
     private ArrayList<MakananDiKonsumsi> listMakananDikonsumsi = new ArrayList<>();
     
     public MakanDikonsumsiController() throws SQLException {
         jdbcConnectionSource = new JdbcConnectionSource(databaseUrl);
         daoBahanMakanan = DaoManager.createDao(jdbcConnectionSource, BahanMakanan.class);
+        daoGolongan = DaoManager.createDao(jdbcConnectionSource, Golongan.class);
         TableUtils.createTableIfNotExists(jdbcConnectionSource, Golongan.class);
         TableUtils.createTableIfNotExists(jdbcConnectionSource, BahanMakanan.class);
-        getListBahanMakananFromDb();
+        getListDataFromDb();
+        inialDumyData();
     }
 
     public List<BahanMakanan> getListBahanMakanan() {
@@ -43,8 +48,18 @@ public class MakanDikonsumsiController {
         this.listBahanMakanan = listBahanMakanan;
     }
     
-    public void getListBahanMakananFromDb() throws SQLException{
+    
+    private void inialDumyData (){
+        MakananDiKonsumsi makananDiKonsumsi = new MakananDiKonsumsi();
+        makananDiKonsumsi.setBahanMakanan(listBahanMakanan.get(0));
+        makananDiKonsumsi.setJumlah(10.0);
+        makananDiKonsumsi.setWaktuMakan("Siang");
+        makananDiKonsumsi.hitungTotalKandunganGizi();
+        listMakananDikonsumsi.add(makananDiKonsumsi);
+    }
+    public void getListDataFromDb() throws SQLException{
         this.listBahanMakanan = daoBahanMakanan.queryForAll();
+        this.listGolongan = daoGolongan.queryForAll();
     }
 
     public ArrayList<MakananDiKonsumsi> getListMakananDikonsumsi() {
@@ -55,5 +70,11 @@ public class MakanDikonsumsiController {
         this.listMakananDikonsumsi = listMakananDikonsumsi;
     }
     
-    
+    public Object[] getListStringGolongan() {
+        ArrayList<String> listString = new ArrayList<>();
+        for (Golongan gol : listGolongan) {
+            listString.add(gol.getNamaGolongan());
+        }
+        return listString.toArray();
+    }
 }
