@@ -12,7 +12,7 @@ import java.util.Observable;
  * @author fahmi
  * 
  */
-public class ProfilUser extends Observable implements Serializable{
+public class ProfilUser  implements Serializable{
 
     private String nama;
     private String jenisKelamin;
@@ -154,9 +154,17 @@ public class ProfilUser extends Observable implements Serializable{
         }
         setKaloriHarian(kaloriHarian);
     }
-    
-    public void notifyAllObserver(){
-        setChanged();
-        notifyObservers();
+
+    @Override
+    public String toString() {
+        String returnValue = "";
+        returnValue += "Nama : " + this.nama + "\n";
+        returnValue += "Umur : " + this.umur + " tahun\n";
+        returnValue += "Berat Badan : " + this.beratBadan + " kg\n";
+        returnValue += "Tinggi Badan : " + this.tinggiBadan + " cm\n";
+        returnValue += "Jenis Kelamin : " + this.jenisKelamin + "\n";
+        return returnValue;
+        
     }
+    
 }

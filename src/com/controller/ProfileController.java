@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class ProfileController extends Observable {
 
-    private ProfilUser profilUser;
+    private ProfilUser profilUser = new ProfilUser();
 
     public ProfilUser getProfilUser() {
         return profilUser;

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="gizi_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f987794f-f1c8-466b-a448-7bf798e00e08">
+	<property name="ireport.zoom" value="1.1000000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PROFILE_USER" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<field name="waktuMakan" class="java.lang.String"/>
+	<field name="beratTotal" class="java.lang.String"/>
+	<field name="karbohidrat" class="java.lang.String"/>
+	<field name="bahanMakanan" class="java.lang.String"/>
+	<field name="kalori" class="java.lang.String"/>
+	<group name="waktu_makan">
+		<groupExpression><![CDATA[$F{waktuMakan}]]></groupExpression>
+		<groupHeader>
+			<band height="22">
+				<textField>
+					<reportElement x="0" y="0" width="555" height="20" uuid="ae7ed517-05d1-4041-b635-2b24b4f70797"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{waktuMakan}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="28"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="62" uuid="5bb7b020-d281-4507-a56b-9818308891bb"/>
+				<textFieldExpression><![CDATA[$P{PROFILE_USER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="25" uuid="8ae3f855-3298-4904-89d3-716229aabe6e"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Analisa Record Makanan]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="124" height="20" uuid="0168a073-f753-4d09-8106-93af667df897"/>
+				<text><![CDATA[Nama Makanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="1" width="38" height="20" uuid="84452c99-d25f-40e9-919e-9c0302cd01fa"/>
+				<text><![CDATA[Berat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="1" width="38" height="20" uuid="4148df8a-05c2-4bc4-8bf9-7ba7a7a18457"/>
+				<text><![CDATA[Energi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="1" width="59" height="20" uuid="db3f78e9-2535-470b-a442-9d07b77348a4"/>
+				<text><![CDATA[Karbohidrat]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="124" height="20" uuid="ccb4b82b-4b9a-448b-a29e-5b2738ff04a4"/>
+				<textFieldExpression><![CDATA[$F{bahanMakanan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="38" height="20" uuid="b52991f4-c5c6-4aa8-bd1a-edd58be03495"/>
+				<textFieldExpression><![CDATA[$F{beratTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="0" width="38" height="20" uuid="c9c51621-978b-46d6-8675-12b5835c223f"/>
+				<textFieldExpression><![CDATA[$F{kalori}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="481" y="0" width="38" height="20" uuid="0c72092f-8d4b-4d29-8b49-043732836727"/>
+				<textFieldExpression><![CDATA[$F{karbohidrat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

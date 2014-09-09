@@ -37,7 +37,7 @@ public class MainFrame extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         try {
             bahanMakananController = new BahanMakananController();
-            makanDikonsumsiController = new MakanDikonsumsiController();
+            makanDikonsumsiController = new MakanDikonsumsiController(profileController.getProfilUser());
         } catch (SQLException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }

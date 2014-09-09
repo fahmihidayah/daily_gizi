@@ -22,6 +22,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -31,6 +33,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.TitledBorder;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -154,7 +157,11 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                try {
+                    makanDikonsumsiController.showPriviewReport();
+                } catch (JRException ex) {
+                    Logger.getLogger(AnalisaKaloriPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         

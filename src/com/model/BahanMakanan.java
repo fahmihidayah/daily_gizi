@@ -6,6 +6,7 @@ package com.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Objects;
  * @author fahmi
  */
 @DatabaseTable(tableName = "BAHAN_MAKANAN")
-public class BahanMakanan {
+public class BahanMakanan implements Serializable{
 
     @DatabaseField(generatedId = true, columnName = "ID_BAHAN_MAKANAN")
     private Long idBahanMakanan;

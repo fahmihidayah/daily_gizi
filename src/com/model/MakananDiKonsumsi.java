@@ -25,6 +25,9 @@ public class MakananDiKonsumsi {
     private String waktuMakan;
     // kurang table informasi total nutrisi
     // kandungan nutrisi disamakan dengan kandungan nutrisi yang ada dibahan makanan
+    
+    @DatabaseField(columnName = "BERAT_TOTAL")
+    private Double beratTotal = 0.0;
     @DatabaseField(columnName = "KARBOHIDRAT")
     private Double karbohidrat = 0.0;
     @DatabaseField(columnName = "PROTEIN")
@@ -103,6 +106,15 @@ public class MakananDiKonsumsi {
         this.lemak = lemak;
     }
 
+    public Double getBeratTotal() {
+        return beratTotal;
+    }
+
+    public void setBeratTotal(Double beratTotal) {
+        this.beratTotal = beratTotal;
+    }
+    
+
     /**
      * helper method untuk menghitung total kandungan gizi
      */
@@ -111,6 +123,7 @@ public class MakananDiKonsumsi {
          this.protein = hitungKandungan(bahanMakanan.getProtein());
          this.lemak = hitungKandungan(bahanMakanan.getLemak());
          this.kalori = hitungKandungan(bahanMakanan.getKalori());
+         this.beratTotal = hitungKandungan(bahanMakanan.getBeratSatuanUrt());
     }
     
     
