@@ -46,6 +46,14 @@ public class DataSingleton {
         this.listBahanMakanan.clear();
         this.listBahanMakanan.addAll(listBahanMakanan);
     }
+
+    public ProfilUser getProfilUser() {
+        return profilUser;
+    }
+
+    public void setProfilUser(ProfilUser profilUser) {
+        this.profilUser = profilUser;
+    }
     
     
 }
