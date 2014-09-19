@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="gizi_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f987794f-f1c8-466b-a448-7bf798e00e08">
-	<property name="ireport.zoom" value="1.1000000000000008"/>
+	<property name="ireport.zoom" value="1.100000000000007"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="41"/>
 	<parameter name="PROFILE_USER" class="java.lang.String">
 		<parameterDescription><![CDATA[]]></parameterDescription>
 	</parameter>
+	<parameter name="TYPE_DIET" class="java.lang.String"/>
+	<parameter name="TOTAL_PROTEIN_DIET" class="java.lang.String"/>
+	<parameter name="TOTAL_KARBOHIDRAT_DIET" class="java.lang.String"/>
+	<parameter name="TOTAL_LEMAK_DIET" class="java.lang.String"/>
+	<parameter name="TOTAL_ENERGI_DIET" class="java.lang.String"/>
+	<parameter name="TOTAL_KARBOHIDRAT_USER" class="java.lang.String"/>
+	<parameter name="TOTAL_PROTEIN_USER" class="java.lang.String"/>
+	<parameter name="TOTAL_LEMAK_USER" class="java.lang.String"/>
+	<parameter name="TOTAL_ENERGI_USER" class="java.lang.String"/>
 	<field name="waktuMakan" class="java.lang.String"/>
 	<field name="beratTotal" class="java.lang.String"/>
 	<field name="karbohidrat" class="java.lang.String"/>
@@ -94,9 +103,74 @@
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="55" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="3" width="555" height="15" uuid="42addc01-4004-4462-b264-20068442c606"/>
+				<text><![CDATA[Kesimpulan :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="18" width="59" height="20" uuid="91ee9dc6-e654-49af-b898-61717b2a4d6e"/>
+				<text><![CDATA[Karbohidrat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="18" width="59" height="20" uuid="fd6ccdd2-24b8-4a66-94b0-c7bb9b386865"/>
+				<text><![CDATA[Protein]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="18" width="59" height="20" uuid="492f3dda-2c02-4bc7-929e-d07cf1253428"/>
+				<text><![CDATA[Lemak]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="18" width="59" height="20" uuid="6e8e8372-3631-426f-ae9b-2ba9dc4acf0f"/>
+				<text><![CDATA[Energi]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="1" width="555" height="1" uuid="1ad0f482-da34-461f-a1d5-770645ed66e4"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="37" width="100" height="20" uuid="c9ffed59-efff-49eb-88f0-530e4227fc07"/>
+				<textFieldExpression><![CDATA[$P{TYPE_DIET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="38" width="59" height="20" uuid="c4bacc5d-c47c-4700-a7a5-54e7c0321bb5"/>
+				<textFieldExpression><![CDATA[$P{TOTAL_KARBOHIDRAT_DIET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="38" width="59" height="20" uuid="a9cd8f8f-af52-46a7-848e-b8bb09613d79"/>
+				<textFieldExpression><![CDATA[$P{TOTAL_PROTEIN_DIET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="38" width="59" height="20" uuid="bf5fb66d-5f4f-4353-8e40-47d29bea14d4"/>
+				<textFieldExpression><![CDATA[$P{TOTAL_LEMAK_DIET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="38" width="59" height="20" uuid="2345fb3a-9da3-4fc7-aa96-b7d1171c6a09"/>
+				<textFieldExpression><![CDATA[$P{TOTAL_ENERGI_DIET}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="60" width="100" height="20" uuid="aa505fbb-b045-4e63-a6d2-95f7f923d647"/>
+				<text><![CDATA[User]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="220" y="60" width="59" height="20" uuid="5db9dfba-e978-421a-9f5f-239676408e38"/>
+				<textFieldExpression><![CDATA[$P{TOTAL_KARBOHIDRAT_USER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="60" width="59" height="20" uuid="1ade22d1-c447-43e5-a190-24c870446c17"/>
+				<textFieldExpression><![CDATA[$P{TOTAL_ENERGI_USER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="60" width="59" height="20" uuid="c318cc1f-2c6e-47ae-99d4-a1711bd954c5"/>
+				<textFieldExpression><![CDATA[$P{TOTAL_LEMAK_USER}]]></textFieldExpression>
+			</textField>
+			<elementGroup/>
+			<textField>
+				<reportElement x="300" y="60" width="59" height="20" uuid="0eab0775-80d2-4ee8-9f61-da7d7e08b194"/>
+				<textFieldExpression><![CDATA[$P{TOTAL_PROTEIN_USER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>

@@ -11,6 +11,7 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.model.BahanMakanan;
 import com.model.Constants;
+import com.model.DataSingleton;
 import com.model.Golongan;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class BahanMakananController extends Observable implements Constants {
     private JdbcConnectionSource jdbcConnectionSource;
     private Dao<BahanMakanan, Long> daoBahanMakanan;
     private Dao<Golongan, Long> daoGolongan;
-    private List<BahanMakanan> listBahanMakanan = new ArrayList<>();
+    private List<BahanMakanan> listBahanMakanan;
     private List<Golongan> listGolongan = new ArrayList<>();
 
     private BahanMakanan editBahanMakanan = null;
@@ -39,6 +40,8 @@ public class BahanMakananController extends Observable implements Constants {
         daoGolongan = DaoManager.createDao(jdbcConnectionSource, Golongan.class);
         TableUtils.createTableIfNotExists(jdbcConnectionSource, Golongan.class);
         TableUtils.createTableIfNotExists(jdbcConnectionSource, BahanMakanan.class);
+        listBahanMakanan = DataSingleton.getInstance().getListBahanMakanan();
+        listGolongan = DataSingleton.getInstance().getListGolongan();
         copyListGolongan();
         copyListBahanMakanan();
     }
@@ -134,4 +137,6 @@ public class BahanMakananController extends Observable implements Constants {
         setChanged();
         notifyObservers();
     }
+    
+    
 }

@@ -63,6 +63,7 @@ public class SimpanBahanMakananFrame extends JFrame implements Constants {
             comboBoxGolongan.setSelectedIndex(bahanMakananController.getListGolongan().indexOf(bahanMakananController.getEditBahanMakanan().getGolongan()));
 
         }
+       
     }
 
     private void initialComponent() {

@@ -9,11 +9,14 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.model.BahanMakanan;
+import com.model.Constants;
 import static com.model.Constants.databaseUrl;
+import com.model.DataSingleton;
 import com.model.Golongan;
 import com.model.MakananDiKonsumsi;
 import com.model.MakananDiKonsumsiReport;
 import com.model.ProfilUser;
+import com.model.TotalGiziMakanan;
 import com.sview.SimpanMakananDikonsumsiFrame;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -38,11 +41,14 @@ import org.olap4j.impl.ArrayNamedListImpl;
  *
  * @author fahmi
  */
-public class MakanDikonsumsiController extends Observable {
+public class MakanDikonsumsiController extends Observable implements  Constants{
 
     private JdbcConnectionSource jdbcConnectionSource;
-    private Dao<BahanMakanan, Long> daoBahanMakanan;
-    private Dao<Golongan, Long> daoGolongan;
+    private TotalGiziMakanan totalGiziMakanan = new TotalGiziMakanan();
+    private TotalGiziMakanan selectedTotalGiziMakanan = null;
+    
+//    private Dao<BahanMakanan, Long> daoBahanMakanan;
+//    private Dao<Golongan, Long> daoGolongan;
     private List<BahanMakanan> listBahanMakanan;
     private List<Golongan> listGolongan;
     private ProfilUser profilUser;
@@ -50,15 +56,18 @@ public class MakanDikonsumsiController extends Observable {
     private BahanMakanan currentBahanMakanan = null;
     private MakananDiKonsumsi currentMakananDiKonsumsi = null;
 
+    
     public MakanDikonsumsiController(ProfilUser profilUser) throws SQLException {
         jdbcConnectionSource = new JdbcConnectionSource(databaseUrl);
-        daoBahanMakanan = DaoManager.createDao(jdbcConnectionSource, BahanMakanan.class);
-        daoGolongan = DaoManager.createDao(jdbcConnectionSource, Golongan.class);
+//        daoBahanMakanan = DaoManager.createDao(jdbcConnectionSource, BahanMakanan.class);
+//        daoGolongan = DaoManager.createDao(jdbcConnectionSource, Golongan.class);
         TableUtils.createTableIfNotExists(jdbcConnectionSource, Golongan.class);
         TableUtils.createTableIfNotExists(jdbcConnectionSource, BahanMakanan.class);
         this.profilUser = profilUser;
-        getListDataFromDb();
-        inialDumyData();
+        listBahanMakanan = DataSingleton.getInstance().getListBahanMakanan();
+        listGolongan = DataSingleton.getInstance().getListGolongan();
+//        getListDataFromDb();
+//        inialDumyData();
     }
 
     public List<BahanMakanan> getListBahanMakanan() {
@@ -67,6 +76,22 @@ public class MakanDikonsumsiController extends Observable {
 
     public void setListBahanMakanan(List<BahanMakanan> listBahanMakanan) {
         this.listBahanMakanan = listBahanMakanan;
+    }
+
+    public TotalGiziMakanan getTotalGiziMakanan() {
+        return totalGiziMakanan;
+    }
+
+    public void setTotalGiziMakanan(TotalGiziMakanan totalGiziMakanan) {
+        this.totalGiziMakanan = totalGiziMakanan;
+    }
+
+    public TotalGiziMakanan getSelectedTotalGiziMakanan() {
+        return selectedTotalGiziMakanan;
+    }
+
+    public void setSelectedTotalGiziMakanan(TotalGiziMakanan selectedTotalGiziMakanan) {
+        this.selectedTotalGiziMakanan = selectedTotalGiziMakanan;
     }
 
     private void inialDumyData() {
@@ -79,8 +104,8 @@ public class MakanDikonsumsiController extends Observable {
     }
 
     public void getListDataFromDb() throws SQLException {
-        this.listBahanMakanan = daoBahanMakanan.queryForAll();
-        this.listGolongan = daoGolongan.queryForAll();
+//        this.listBahanMakanan = daoBahanMakanan.queryForAll();
+//        this.listGolongan = daoGolongan.queryForAll();
     }
 
     public ArrayList<MakananDiKonsumsi> getListMakananDikonsumsi() {
@@ -172,6 +197,20 @@ public class MakanDikonsumsiController extends Observable {
 
                     map.put(JRParameter.REPORT_DATA_SOURCE, jRDataSource);
                     map.put("PROFILE_USER", profilUser.toString());
+                    map.put("TYPE_DIET", selectedTotalGiziMakanan.getNamaDiet());
+                    map.put("TOTAL_PROTEIN_DIET", selectedTotalGiziMakanan.getTotalProtein());
+                    map.put("TOTAL_KARBOHIDRAT_DIET", selectedTotalGiziMakanan.getTotalKarbohidrat());
+                    map.put("TOTAL_LEMAK_DIET", selectedTotalGiziMakanan.getTotalLemak());
+                    map.put("TOTAL_ENERGI_DIET", selectedTotalGiziMakanan.getTotalEnergi());
+                    
+                    map.put("TOTAL_PROTEIN_USER", totalGiziMakanan.getTotalProtein());
+                    map.put("TOTAL_KARBOHIDRAT_USER", totalGiziMakanan.getTotalKarbohidrat());
+                    map.put("TOTAL_LEMAK_USER", totalGiziMakanan.getTotalLemak());
+                    map.put("TOTAL_ENERGI_USER", totalGiziMakanan.getTotalEnergi());
+                    
+                    
+                    
+                    
                     JasperPrint report = JasperFillManager.fillReport(streamRep, map, jRDataSource);
                     
                     JasperViewer jv = new JasperViewer(report, false);
@@ -195,4 +234,38 @@ public class MakanDikonsumsiController extends Observable {
         }
         return listMakananDiKonsumsiReports;
     }
+    
+    public void hitungTotalNutrisi(){
+        totalGiziMakanan = new TotalGiziMakanan();
+        for (MakananDiKonsumsi makananDikonsumsi : listMakananDikonsumsi) {
+            if(getNamaGolongan(makananDikonsumsi).equalsIgnoreCase(BUAH)){
+                totalGiziMakanan.setTotalBuah(totalGiziMakanan.getTotalBuah() + makananDikonsumsi.getJumlah());
+            }
+            else if(getNamaGolongan(makananDikonsumsi).equalsIgnoreCase(KARBOHIDRAT)){
+                totalGiziMakanan.setTotalKarbohidratAtauNasi(totalGiziMakanan.getTotalKarbohidratAtauNasi() + makananDikonsumsi.getJumlah());
+            }
+            // ada tambahan lain
+            totalGiziMakanan.setTotalEnergi(totalGiziMakanan.getTotalEnergi() + makananDikonsumsi.getKalori());
+            totalGiziMakanan.setTotalProtein(totalGiziMakanan.getTotalProtein() + makananDikonsumsi.getProtein());
+            totalGiziMakanan.setTotalLemak(totalGiziMakanan.getTotalLemak() + makananDikonsumsi.getLemak());
+            totalGiziMakanan.setTotalKarbohidrat(totalGiziMakanan.getTotalKarbohidrat() + makananDikonsumsi.getKarbohidrat());
+        }
+        
+    }
+    
+    public String getKeteranganNutrisi(){
+        return totalGiziMakanan.toString();
+    }
+    
+    private String getNamaGolongan(MakananDiKonsumsi makananDiKonsumsi){
+        return makananDiKonsumsi.getBahanMakanan().getGolongan().getNamaGolongan();
+    }
+//    public void loadListBahanMakanan() {
+//        try {
+//            listBahanMakanan.clear();
+//            listBahanMakanan = daoBahanMakanan.queryForAll();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(BahanMakananController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 }

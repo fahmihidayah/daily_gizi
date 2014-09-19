@@ -148,8 +148,26 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
         
         JPanel keteranganPanel = new JPanel(new BorderLayout());
         keteranganPanel.setBorder(new TitledBorder("Keterangan"));
-        labelKeterangan = new JLabel("Keterangan dll");
-        keteranganPanel.add(labelKeterangan);
+        labelKeterangan = new JLabel(makanDikonsumsiController.getKeteranganNutrisi());
+        keteranganPanel.add(labelKeterangan, BorderLayout.CENTER);
+        JButton buttonListGiziIdeal = new JButton("Daftar Nutrisi Diet");
+        buttonListGiziIdeal.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+        JPanel panelButton = new JPanel(new FlowLayout());
+        buttonListGiziIdeal.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {   
+                DaftarTotalGiziMakananFrame daftarTotalGiziMakananFrame = new DaftarTotalGiziMakananFrame(makanDikonsumsiController);
+            }
+        });
+        panelButton.add(buttonListGiziIdeal);
+        keteranganPanel.add(panelButton, BorderLayout.SOUTH);
         
         JPanel priviewPanel = new JPanel(new FlowLayout());
         JButton buttonPriviewPanel = new JButton("Priveiew Report");
@@ -157,11 +175,7 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
                     makanDikonsumsiController.showPriviewReport();
-                } catch (JRException ex) {
-                    Logger.getLogger(AnalisaKaloriPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         });
         
@@ -175,6 +189,8 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
     @Override
     public void update(Observable o, Object arg) {
         customTableModelMakananDikonsumsi.filter("", 0);
+        makanDikonsumsiController.hitungTotalNutrisi();
+        labelKeterangan.setText(makanDikonsumsiController.getKeteranganNutrisi());
     }
     
 }
