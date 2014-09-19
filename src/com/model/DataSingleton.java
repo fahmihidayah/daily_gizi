@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class DataSingleton {
     protected static DataSingleton instance;
+    private ProfilUser profilUser = new ProfilUser();
     private ArrayList<BahanMakanan> listBahanMakanan = new ArrayList<>();
     private ArrayList<Golongan> listGolongan = new ArrayList<>();
     
