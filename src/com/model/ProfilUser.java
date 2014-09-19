@@ -20,6 +20,7 @@ public class ProfilUser  implements Serializable{
     private Double beratBadan;
     private Integer umur;
     // hitung attribute
+    private Double beratBadanRelative;
     private String tingkatAktifitas;
     private Double beratBadanIdeal;
     private Double bmi;
@@ -114,21 +115,48 @@ public class ProfilUser  implements Serializable{
         }
     }
 
+    public void hitungBeratBadanRelative(){
+        this.beratBadanRelative = this.beratBadan / (this.tinggiBadan - 100) * 100;
+        identifikasiKlasifikasiGizi();
+    }
+    
     public void hitungBMI() {
         this.bmi = this.beratBadan / Math.pow(this.tinggiBadan, this.tinggiBadan);
-        this.identifikasiKlasifikas();
+//        this.identifikasiKlasifikas();
     }
 
-    private void identifikasiKlasifikas() {
-        if (this.bmi < 18.5) {
-            this.klasifikasi = "berat badan kurang";
-        } else if (this.bmi >= 18.5 && this.bmi <= 24) {
-            this.klasifikasi = "berat badan normal";
-        } else if (this.bmi >= 25 && this.bmi <= 29) {
-            this.klasifikasi = "kelebihan berat badan";
-        } else if (this.bmi > 30) {
-            this.klasifikasi = "obesitas";
+//    private void identifikasiKlasifikas() {
+//        if (this.bmi < 18.5) {
+//            this.klasifikasi = "berat badan kurang";
+//        } else if (this.bmi >= 18.5 && this.bmi <= 24) {
+//            this.klasifikasi = "berat badan normal";
+//        } else if (this.bmi >= 25 && this.bmi <= 29) {
+//            this.klasifikasi = "kelebihan berat badan";
+//        } else if (this.bmi > 30) {
+//            this.klasifikasi = "obesitas";
+//        }
+//    }
+    
+    private void identifikasiKlasifikasiGizi(){
+        if(this.beratBadanRelative < 90){
+            this.klasifikasi = "Kurus (Underweight)";
         }
+        else if(this.beratBadanRelative >= 90 && this.beratBadanRelative <= 100){
+            this.klasifikasi = "Normal (Ideal)";
+        }
+        else if(this.beratBadanRelative > 110){
+            this.klasifikasi = "Gemuk (Overweight)";
+        }
+        else if(this.beratBadanRelative >= 120 && this.beratBadanRelative <= 130){
+            this.klasifikasi = "Obesitas Ringan";
+        }
+        else if(this.beratBadanRelative > 130 && this.beratBadanRelative <= 140){
+            this.klasifikasi = "Obesitas Sedang";
+        }
+        else if(this.beratBadanRelative > 140){
+            this.klasifikasi = "Obesitas Berat";
+        }
+        
     }
 
     public void hitungKebutuhanKaloriHarian() {
