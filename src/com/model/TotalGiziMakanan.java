@@ -5,8 +5,9 @@
 
 package com.model;
 import static com.model.Constants.decimalFormat;
+import java.util.ArrayList;
 /**
- *
+ * 
  * @author fahmi
  */
 public class TotalGiziMakanan {
@@ -23,6 +24,8 @@ public class TotalGiziMakanan {
     private Double totalProtein= 0.0;
     private Double totalLemak= 0.0;
     private Double totalKarbohidrat= 0.0;
+    private ArrayList<AcuanMakananSehari> listAcuanMakanaSehari = new ArrayList<>();
+    private ArrayList<ContohMakananSehari> listContohMakananSehari = new ArrayList<>();
 
     public String getNamaDiet() {
         return namaDiet;
@@ -128,6 +131,22 @@ public class TotalGiziMakanan {
         this.totalKarbohidrat = totalKarbohidrat;
     }
 
+    public ArrayList<AcuanMakananSehari> getListAcuanMakanaSehari() {
+        return listAcuanMakanaSehari;
+    }
+
+    public void setListAcuanMakanaSehari(ArrayList<AcuanMakananSehari> listAcuanMakanaSehari) {
+        this.listAcuanMakanaSehari = listAcuanMakanaSehari;
+    }
+
+    public ArrayList<ContohMakananSehari> getListContohMakananSehari() {
+        return listContohMakananSehari;
+    }
+
+    public void setListContohMakananSehari(ArrayList<ContohMakananSehari> listContohMakananSehari) {
+        this.listContohMakananSehari = listContohMakananSehari;
+    }
+    
     @Override
     public String toString() {
         String totalGizi = "Energi  : " + decimalFormat.format(getTotalEnergi()) +" Kal \n";
@@ -137,4 +156,109 @@ public class TotalGiziMakanan {
         return totalGizi;
     }
     
+    
+    public static class AcuanMakananSehari{
+        private String namaMakanan;
+        private String satuanMakanan;
+
+        public AcuanMakananSehari(String namaMakanan, String satuanMakanan) {
+            this.namaMakanan = namaMakanan;
+            this.satuanMakanan = satuanMakanan;
+        }
+
+        public String getNamaMakanan() {
+            return namaMakanan;
+        }
+
+        public void setNamaMakanan(String namaMakanan) {
+            this.namaMakanan = namaMakanan;
+        }
+
+        public String getSatuanMakanan() {
+            return satuanMakanan;
+        }
+
+        public void setSatuanMakanan(String satuanMakanan) {
+            this.satuanMakanan = satuanMakanan;
+        }
+    }
+    
+    public static class ContohMakananSehari{
+        private String waktu;
+        private Double berat;
+        private Double urt;
+        private String satuanUrt;
+        private Double penukar;
+        private String satuanPenukar;
+        private String contohMenu;
+
+        public String getWaktu() {
+            return waktu;
+        }
+
+        public void setWaktu(String waktu) {
+            this.waktu = waktu;
+        }
+
+        public Double getBerat() {
+            return berat;
+        }
+
+        public void setBerat(Double berat) {
+            this.berat = berat;
+        }
+
+        public Double getUrt() {
+            return urt;
+        }
+
+        public void setUrt(Double urt) {
+            this.urt = urt;
+        }
+
+        public String getSatuanUrt() {
+            return satuanUrt;
+        }
+
+        public void setSatuanUrt(String satuanUrt) {
+            this.satuanUrt = satuanUrt;
+        }
+
+        public Double getPenukar() {
+            return penukar;
+        }
+
+        public void setPenukar(Double penukar) {
+            this.penukar = penukar;
+        }
+
+        public String getSatuanPenukar() {
+            return satuanPenukar;
+        }
+
+        public void setSatuanPenukar(String satuanPenukar) {
+            this.satuanPenukar = satuanPenukar;
+        }
+
+        public String getContohMenu() {
+            return contohMenu;
+        }
+
+        public void setContohMenu(String contohMenu) {
+            this.contohMenu = contohMenu;
+        }
+
+        public ContohMakananSehari(String waktu, Double berat, Double urt, String satuanUrt, Double penukar, String satuanPenukar, String contohMenu) {
+            this.waktu = waktu;
+            this.berat = berat;
+            this.urt = urt;
+            this.satuanUrt = satuanUrt;
+            this.penukar = penukar;
+            this.satuanPenukar = satuanPenukar;
+            this.contohMenu = contohMenu;
+        }
+        
+        
+        
+    }
 }

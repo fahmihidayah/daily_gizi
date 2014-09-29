@@ -150,24 +150,18 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
         keteranganPanel.setBorder(new TitledBorder("Keterangan"));
         labelKeterangan = new JLabel(makanDikonsumsiController.getKeteranganNutrisi());
         keteranganPanel.add(labelKeterangan, BorderLayout.CENTER);
-        JButton buttonListGiziIdeal = new JButton("Daftar Nutrisi Diet");
-        buttonListGiziIdeal.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-        });
-        JPanel panelButton = new JPanel(new FlowLayout());
-        buttonListGiziIdeal.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {   
-                DaftarTotalGiziMakananFrame daftarTotalGiziMakananFrame = new DaftarTotalGiziMakananFrame(makanDikonsumsiController);
-            }
-        });
-        panelButton.add(buttonListGiziIdeal);
-        keteranganPanel.add(panelButton, BorderLayout.SOUTH);
+//        JButton buttonListGiziIdeal = new JButton("Daftar Nutrisi Diet");
+//        
+//        JPanel panelButton = new JPanel(new FlowLayout());
+//        buttonListGiziIdeal.addActionListener(new ActionListener() {
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {   
+//                DaftarTotalGiziMakananFrame daftarTotalGiziMakananFrame = new DaftarTotalGiziMakananFrame(makanDikonsumsiController);
+//            }
+//        });
+//        panelButton.add(buttonListGiziIdeal);
+//        keteranganPanel.add(panelButton, BorderLayout.SOUTH);
         
         JPanel priviewPanel = new JPanel(new FlowLayout());
         JButton buttonPriviewPanel = new JButton("Priveiew Report");

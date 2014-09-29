@@ -15,7 +15,7 @@ public class DataSingleton {
     private ProfilUser profilUser = new ProfilUser();
     private ArrayList<BahanMakanan> listBahanMakanan = new ArrayList<>();
     private ArrayList<Golongan> listGolongan = new ArrayList<>();
-    
+
     
     public static DataSingleton getInstance(){
         if(instance == null){
