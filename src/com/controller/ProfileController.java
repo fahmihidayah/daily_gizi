@@ -4,6 +4,7 @@
  */
 package com.controller;
 
+import com.model.DataSingleton;
 import com.model.ProfilUser;
 import com.sview.EditProfileFrame;
 import com.sview.ProfilePanel;
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class ProfileController extends Observable {
 
-    private ProfilUser profilUser = new ProfilUser();
+    private ProfilUser profilUser = DataSingleton.getInstance().getProfilUser();
 
     public ProfilUser getProfilUser() {
         return profilUser;
@@ -36,6 +37,8 @@ public class ProfileController extends Observable {
         profilUser.setJenisKelamin(editProfileFrame.comboBoxJenisKelamin.getSelectedItem().toString());
         profilUser.setTinggiBadan(Double.parseDouble(editProfileFrame.textFieldTinggiBadan.getText()));
         profilUser.setUmur(Integer.parseInt(editProfileFrame.textFieldUmur.getText()));
+        profilUser.hitungBeratBadanRelative();
+        
         JOptionPane.showConfirmDialog(null, "Sukses edit user", "Pesan", JOptionPane.OK_OPTION);
         setChanged();
         notifyObservers();
@@ -52,5 +55,7 @@ public class ProfileController extends Observable {
         profilPanel.labelBeratBadan.setText("Berat Badan : " + profilUser.getBeratBadan() + " Kg");
         profilPanel.labelTinggiBadan.setText("Tinggi Badan : " + profilUser.getTinggiBadan() + " Cm");
         profilPanel.labelUmur.setText("Umur : " + profilUser.getUmur() + " Tahun");
+        profilPanel.labelKlasifikasi.setText("Klasifikasi : " + profilUser.getKlasifikasi());
+        profilPanel.labelKebutuhanKaloriHarian.setText("Kebutuhan Kalori Harian : " + profilUser.getKaloriHarian() + " Kal");
     }
 }

@@ -118,6 +118,7 @@ public class ProfilUser  implements Serializable{
     public void hitungBeratBadanRelative(){
         this.beratBadanRelative = this.beratBadan / (this.tinggiBadan - 100) * 100;
         identifikasiKlasifikasiGizi();
+        hitungKaloriHarian();
     }
     
     public void hitungBMI() {
@@ -141,10 +142,10 @@ public class ProfilUser  implements Serializable{
         if(this.beratBadanRelative < 90){
             this.klasifikasi = "Kurus (Underweight)";
         }
-        else if(this.beratBadanRelative >= 90 && this.beratBadanRelative <= 100){
+        else if(this.beratBadanRelative >= 90 && this.beratBadanRelative <= 110){
             this.klasifikasi = "Normal (Ideal)";
         }
-        else if(this.beratBadanRelative > 110){
+        else if(this.beratBadanRelative <= 120){
             this.klasifikasi = "Gemuk (Overweight)";
         }
         else if(this.beratBadanRelative >= 120 && this.beratBadanRelative <= 130){
@@ -156,9 +157,26 @@ public class ProfilUser  implements Serializable{
         else if(this.beratBadanRelative > 140){
             this.klasifikasi = "Obesitas Berat";
         }
+        else {
+            this.klasifikasi = "Tidak ada ," + beratBadanRelative;
+        }
         
     }
 
+    private void hitungKaloriHarian(){
+       if(this.klasifikasi.equalsIgnoreCase("Kurus (Underweight)")){
+           this.kaloriHarian = this.beratBadan * 40;
+       }
+       else if(this.klasifikasi.equalsIgnoreCase("Normal (Ideal)")){
+            this.kaloriHarian = this.beratBadan * 30;
+       }
+       else if(this.klasifikasi.equalsIgnoreCase("Gemuk (Overweight)")){
+            this.kaloriHarian = this.beratBadan * 20;
+       }
+       else {
+            this.kaloriHarian = this.beratBadan * 10;
+       }
+    }
     public void hitungKebutuhanKaloriHarian() {
         double kebutuhanKaloriHarian;
         if (jenisKelamin.equalsIgnoreCase("perempuan")) {

@@ -26,7 +26,8 @@ import javax.swing.SpringLayout;
  */
 public class ProfilePanel extends JPanel implements  Observer{
 
-    public JLabel labelNama, labelJenisKelamin, labelTinggiBadan, labelBeratBadan, labelUmur;
+    public JLabel labelNama, labelJenisKelamin, labelTinggiBadan, labelBeratBadan, labelUmur
+            , labelKlasifikasi, labelKebutuhanKaloriHarian;
     private JButton buttonEdit;
 
 //    private ProfilUser profilUser ;
@@ -47,12 +48,16 @@ public class ProfilePanel extends JPanel implements  Observer{
         labelJenisKelamin = new JLabel("Jenis Kelamin");
         labelTinggiBadan = new JLabel("Tinggi Badan");
         labelUmur = new JLabel("Umur");
+        labelKlasifikasi = new JLabel("Klasifikasi");
+        labelKebutuhanKaloriHarian = new JLabel("Kebutuhan Kalori Harian");
         panel.add(labelNama);
         panel.add(labelJenisKelamin);
         panel.add(labelTinggiBadan);
         panel.add(labelBeratBadan);
         panel.add(labelUmur);
-        SpringUtilities.makeGrid(panel, 5, 1, 10, 10, 10, 10);   
+        panel.add(labelKlasifikasi);
+        panel.add(labelKebutuhanKaloriHarian);
+        SpringUtilities.makeGrid(panel, 7, 1, 10, 10, 10, 10);   
         return panel;
     }
     
