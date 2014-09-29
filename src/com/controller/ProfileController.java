@@ -6,8 +6,10 @@ package com.controller;
 
 import com.model.DataSingleton;
 import com.model.ProfilUser;
+import com.model.TotalGiziMakanan;
 import com.sview.EditProfileFrame;
 import com.sview.ProfilePanel;
+import java.util.ArrayList;
 import java.util.Observable;
 import javax.swing.JOptionPane;
 
@@ -18,7 +20,12 @@ import javax.swing.JOptionPane;
 public class ProfileController extends Observable {
 
     private ProfilUser profilUser = DataSingleton.getInstance().getProfilUser();
+    private ArrayList<TotalGiziMakanan> listTotalGiziMakanan = DataSingleton.getInstance().getListTotalGiziMakanan();
 
+    public ProfileController() {
+        initialListTotalGiziMakanan();
+    }
+    
     public ProfilUser getProfilUser() {
         return profilUser;
     }
@@ -57,5 +64,105 @@ public class ProfileController extends Observable {
         profilPanel.labelUmur.setText("Umur : " + profilUser.getUmur() + " Tahun");
         profilPanel.labelKlasifikasi.setText("Klasifikasi : " + profilUser.getKlasifikasi());
         profilPanel.labelKebutuhanKaloriHarian.setText("Kebutuhan Kalori Harian : " + profilUser.getKaloriHarian() + " Kal");
+    }
+    
+    private void initialListTotalGiziMakanan(){
+        TotalGiziMakanan totalGiziMakanan = new TotalGiziMakanan();
+        totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 1100 Kal");
+        totalGiziMakanan.setJenisEnergi(1100.0);
+        totalGiziMakanan.setTotalKarbohidrat(2.0);
+        totalGiziMakanan.setNabati(2.0);
+        totalGiziMakanan.setSusuTanpaLemak(0.0);
+        totalGiziMakanan.setMinyak(3.0);
+        totalGiziMakanan.setTotalEnergi(1024.0);
+        totalGiziMakanan.setTotalProtein(41.0);
+        totalGiziMakanan.setTotalLemak(30.0);
+        totalGiziMakanan.setTotalKarbohidrat(152.0);
+        
+        totalGiziMakanan = new TotalGiziMakanan();
+        totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 1300 Kal");
+        totalGiziMakanan.setJenisEnergi(1300.0);
+        totalGiziMakanan.setTotalKarbohidrat(3.0);
+        totalGiziMakanan.setNabati(2.0);
+        totalGiziMakanan.setSusuTanpaLemak(0.0);
+        totalGiziMakanan.setMinyak(4.0);
+        totalGiziMakanan.setTotalEnergi(1263.0);
+        totalGiziMakanan.setTotalProtein(45.0);
+        totalGiziMakanan.setTotalLemak(35.0);
+        totalGiziMakanan.setTotalKarbohidrat(192.0);
+        
+        totalGiziMakanan = new TotalGiziMakanan();
+        totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 1500 Kal");
+        totalGiziMakanan.setJenisEnergi(1500.0);
+        totalGiziMakanan.setTotalKarbohidrat(4.0);
+        totalGiziMakanan.setNabati(2.5);
+        totalGiziMakanan.setSusuTanpaLemak(0.0);
+        totalGiziMakanan.setMinyak(4.0);
+        totalGiziMakanan.setTotalEnergi(1476.0);
+        totalGiziMakanan.setTotalProtein(51.0);
+        totalGiziMakanan.setTotalLemak(36.0);
+        totalGiziMakanan.setTotalKarbohidrat(235.0);
+        
+        totalGiziMakanan = new TotalGiziMakanan();
+        totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 1700 Kal");
+        totalGiziMakanan.setJenisEnergi(1700.0);
+        totalGiziMakanan.setTotalKarbohidrat(5.0);
+        totalGiziMakanan.setNabati(2.5);
+        totalGiziMakanan.setSusuTanpaLemak(0.0);
+        totalGiziMakanan.setMinyak(4.0);
+        totalGiziMakanan.setTotalEnergi(1652.0);
+        totalGiziMakanan.setTotalProtein(55.0);
+        totalGiziMakanan.setTotalLemak(36.0);
+        totalGiziMakanan.setTotalKarbohidrat(275.0);
+        
+        totalGiziMakanan = new TotalGiziMakanan();
+        totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 1900 Kal");
+        totalGiziMakanan.setJenisEnergi(1900.0);
+        totalGiziMakanan.setTotalKarbohidrat(6.0);
+        totalGiziMakanan.setNabati(2.5);
+        totalGiziMakanan.setSusuTanpaLemak(0.0);
+        totalGiziMakanan.setMinyak(6.0);
+        totalGiziMakanan.setTotalEnergi(1918.0);
+        totalGiziMakanan.setTotalProtein(59.0);
+        totalGiziMakanan.setTotalLemak(46.0);
+        totalGiziMakanan.setTotalKarbohidrat(315.0);
+        
+        totalGiziMakanan = new TotalGiziMakanan();
+        totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 2100 Kal");
+        totalGiziMakanan.setJenisEnergi(2100.0);
+        totalGiziMakanan.setTotalKarbohidrat(6.5);
+        totalGiziMakanan.setNabati(3.0);
+        totalGiziMakanan.setSusuTanpaLemak(0.0);
+        totalGiziMakanan.setMinyak(7.0);
+        totalGiziMakanan.setTotalEnergi(2089.0);
+        totalGiziMakanan.setTotalProtein(64.0);
+        totalGiziMakanan.setTotalLemak(53.0);
+        totalGiziMakanan.setTotalKarbohidrat(339.0);
+        
+        totalGiziMakanan = new TotalGiziMakanan();
+        totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 2300 Kal");
+        totalGiziMakanan.setJenisEnergi(2300.0);
+        totalGiziMakanan.setTotalKarbohidrat(7.5);
+        totalGiziMakanan.setNabati(3.0);
+        totalGiziMakanan.setSusuTanpaLemak(1.0);
+        totalGiziMakanan.setMinyak(7.0);
+        totalGiziMakanan.setTotalEnergi(2310.0);
+        totalGiziMakanan.setTotalProtein(75.0);
+        totalGiziMakanan.setTotalLemak(63.0);
+        totalGiziMakanan.setTotalKarbohidrat(379.0);
+        
+        totalGiziMakanan = new TotalGiziMakanan();
+        totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 2500 Kal");
+        totalGiziMakanan.setJenisEnergi(2500.0);
+        totalGiziMakanan.setTotalKarbohidrat(8.0);
+        totalGiziMakanan.setNabati(5.0);
+        totalGiziMakanan.setSusuTanpaLemak(1.0);
+        totalGiziMakanan.setMinyak(7.0);
+        totalGiziMakanan.setTotalEnergi(2503.0);
+        totalGiziMakanan.setTotalProtein(87.0);
+        totalGiziMakanan.setTotalLemak(69.0);
+        totalGiziMakanan.setTotalKarbohidrat(413.0);
+        
+        
     }
 }

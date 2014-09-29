@@ -239,10 +239,10 @@ public class MakanDikonsumsiController extends Observable implements  Constants{
         totalGiziMakanan = new TotalGiziMakanan();
         for (MakananDiKonsumsi makananDikonsumsi : listMakananDikonsumsi) {
             if(getNamaGolongan(makananDikonsumsi).equalsIgnoreCase(BUAH)){
-                totalGiziMakanan.setTotalBuah(totalGiziMakanan.getTotalBuah() + makananDikonsumsi.getJumlah());
+                totalGiziMakanan.setBuah(totalGiziMakanan.getBuah() + makananDikonsumsi.getJumlah());
             }
             else if(getNamaGolongan(makananDikonsumsi).equalsIgnoreCase(KARBOHIDRAT)){
-                totalGiziMakanan.setTotalKarbohidratAtauNasi(totalGiziMakanan.getTotalKarbohidratAtauNasi() + makananDikonsumsi.getJumlah());
+                totalGiziMakanan.setKarbohidrat(totalGiziMakanan.getKarbohidrat()+ makananDikonsumsi.getJumlah());
             }
             // ada tambahan lain
             totalGiziMakanan.setTotalEnergi(totalGiziMakanan.getTotalEnergi() + makananDikonsumsi.getKalori());

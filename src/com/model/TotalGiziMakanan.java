@@ -2,30 +2,42 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.model;
+
 import static com.model.Constants.decimalFormat;
 import java.util.ArrayList;
+
 /**
- * 
+ *
  * @author fahmi
  */
 public class TotalGiziMakanan {
+
     private String namaDiet;
-    private Double totalKarbohidratAtauNasi = 0.0;
-    private Double totalHewaniRendahLemak= 0.0;
-    private Double totalHewaniLemakSedang= 0.0;
-    private Double totalSayuranB= 0.0;
-    private Double totalBuah= 0.0;
-    private Double totalMadu= 0.0;
-    private Double totalSantanAtauMinyak= 0.0;
-    private Double totalKueRp= 0.0;
-    private Double totalEnergi= 0.0;
-    private Double totalProtein= 0.0;
-    private Double totalLemak= 0.0;
-    private Double totalKarbohidrat= 0.0;
+    private Double jenisEnergi = 0.0;
+    private Double karbohidrat = 0.0;
+    private Double proteinHewaniRendahLemak = 2.0;
+    private Double proteinHewaniLemakSedang = 1.0;
+    private Double nabati = 0.0;
+    private String sayuranA = "S";
+    private Double sayuranB = 2.0;
+    private Double buah = 4.0;
+    private Double susuTanpaLemak = 1.0;
+    private Double minyak = 0.0;
+    private Double totalEnergi = 0.0;
+    private Double totalProtein = 0.0;
+    private Double totalLemak = 0.0;
+    private Double totalKarbohidrat = 0.0;
     private ArrayList<AcuanMakananSehari> listAcuanMakanaSehari = new ArrayList<>();
     private ArrayList<ContohMakananSehari> listContohMakananSehari = new ArrayList<>();
+
+    public Double getJenisEnergi() {
+        return jenisEnergi;
+    }
+
+    public void setJenisEnergi(Double jenisEnergi) {
+        this.jenisEnergi = jenisEnergi;
+    }
 
     public String getNamaDiet() {
         return namaDiet;
@@ -35,68 +47,76 @@ public class TotalGiziMakanan {
         this.namaDiet = namaDiet;
     }
 
-    public Double getTotalKarbohidratAtauNasi() {
-        return totalKarbohidratAtauNasi;
+    public Double getKarbohidrat() {
+        return karbohidrat;
     }
 
-    public void setTotalKarbohidratAtauNasi(Double totalKarbohidratAtauNasi) {
-        this.totalKarbohidratAtauNasi = totalKarbohidratAtauNasi;
+    public void setKarbohidrat(Double karbohidrat) {
+        this.karbohidrat = karbohidrat;
     }
 
-    public Double getTotalHewaniRendahLemak() {
-        return totalHewaniRendahLemak;
+    public Double getProteinHewaniRendahLemak() {
+        return proteinHewaniRendahLemak;
     }
 
-    public void setTotalHewaniRendahLemak(Double totalHewaniRendahLemak) {
-        this.totalHewaniRendahLemak = totalHewaniRendahLemak;
+    public void setProteinHewaniRendahLemak(Double proteinHewaniRendahLemak) {
+        this.proteinHewaniRendahLemak = proteinHewaniRendahLemak;
     }
 
-    public Double getTotalHewaniLemakSedang() {
-        return totalHewaniLemakSedang;
+    public Double getProteinHewaniLemakSedang() {
+        return proteinHewaniLemakSedang;
     }
 
-    public void setTotalHewaniLemakSedang(Double totalHewaniLemakSedang) {
-        this.totalHewaniLemakSedang = totalHewaniLemakSedang;
+    public void setProteinHewaniLemakSedang(Double proteinHewaniLemakSedang) {
+        this.proteinHewaniLemakSedang = proteinHewaniLemakSedang;
     }
 
-    public Double getTotalSayuranB() {
-        return totalSayuranB;
+    public Double getNabati() {
+        return nabati;
     }
 
-    public void setTotalSayuranB(Double totalSayuranB) {
-        this.totalSayuranB = totalSayuranB;
+    public void setNabati(Double nabati) {
+        this.nabati = nabati;
     }
 
-    public Double getTotalBuah() {
-        return totalBuah;
+    public String getSayuranA() {
+        return sayuranA;
     }
 
-    public void setTotalBuah(Double totalBuah) {
-        this.totalBuah = totalBuah;
+    public void setSayuranA(String sayuranA) {
+        this.sayuranA = sayuranA;
     }
 
-    public Double getTotalMadu() {
-        return totalMadu;
+    public Double getSayuranB() {
+        return sayuranB;
     }
 
-    public void setTotalMadu(Double totalMadu) {
-        this.totalMadu = totalMadu;
+    public void setSayuranB(Double sayuranB) {
+        this.sayuranB = sayuranB;
     }
 
-    public Double getTotalSantanAtauMinyak() {
-        return totalSantanAtauMinyak;
+    public Double getBuah() {
+        return buah;
     }
 
-    public void setTotalSantanAtauMinyak(Double totalSantanAtauMinyak) {
-        this.totalSantanAtauMinyak = totalSantanAtauMinyak;
+    public void setBuah(Double buah) {
+        this.buah = buah;
     }
 
-    public Double getTotalKueRp() {
-        return totalKueRp;
+    public Double getSusuTanpaLemak() {
+        return susuTanpaLemak;
     }
 
-    public void setTotalKueRp(Double totalKueRp) {
-        this.totalKueRp = totalKueRp;
+    public void setSusuTanpaLemak(Double susuTanpaLemak) {
+        this.susuTanpaLemak = susuTanpaLemak;
+    }
+
+    public Double getMinyak() {
+        return minyak;
+    }
+
+    public void setMinyak(Double minyak) {
+        this.minyak = minyak;
     }
 
     public Double getTotalEnergi() {
@@ -146,18 +166,18 @@ public class TotalGiziMakanan {
     public void setListContohMakananSehari(ArrayList<ContohMakananSehari> listContohMakananSehari) {
         this.listContohMakananSehari = listContohMakananSehari;
     }
-    
+
     @Override
     public String toString() {
-        String totalGizi = "Energi  : " + decimalFormat.format(getTotalEnergi()) +" Kal \n";
-        totalGizi += "Protein : " +decimalFormat.format(getTotalProtein()) + " gr \n";
+        String totalGizi = "Energi  : " + decimalFormat.format(getTotalEnergi()) + " Kal \n";
+        totalGizi += "Protein : " + decimalFormat.format(getTotalProtein()) + " gr \n";
         totalGizi += "Lemak : " + decimalFormat.format(getTotalLemak()) + " gr \n";
         totalGizi += "Karbohidrat :" + decimalFormat.format(getTotalKarbohidrat()) + " gr \n";
         return totalGizi;
     }
-    
-    
-    public static class AcuanMakananSehari{
+
+    public static class AcuanMakananSehari {
+
         private String namaMakanan;
         private String satuanMakanan;
 
@@ -182,8 +202,9 @@ public class TotalGiziMakanan {
             this.satuanMakanan = satuanMakanan;
         }
     }
-    
-    public static class ContohMakananSehari{
+
+    public static class ContohMakananSehari {
+
         private String waktu;
         private Double berat;
         private Double urt;
@@ -257,8 +278,5 @@ public class TotalGiziMakanan {
             this.satuanPenukar = satuanPenukar;
             this.contohMenu = contohMenu;
         }
-        
-        
-        
     }
 }

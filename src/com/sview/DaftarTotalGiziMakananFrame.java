@@ -49,7 +49,7 @@ public class DaftarTotalGiziMakananFrame extends JFrame {
         totalGiziMakanan.setTotalHewaniRendahLemak(1.5);
         totalGiziMakanan.setTotalSayuranB(1.5);
         totalGiziMakanan.setTotalMadu(0.0);
-        totalGiziMakanan.setTotalSantanAtauMinyak(5.0);
+        totalGiziMakanan.setTotalMinyak(5.0);
         totalGiziMakanan.setTotalKueRp(0.0);
         totalGiziMakanan.setTotalProtein(31.0);
         totalGiziMakanan.setTotalLemak(34.5);
@@ -65,7 +65,7 @@ public class DaftarTotalGiziMakananFrame extends JFrame {
 
         totalGiziMakanan.setTotalBuah(4.0);
         totalGiziMakanan.setTotalMadu(1.0);
-        totalGiziMakanan.setTotalSantanAtauMinyak(6.0);
+        totalGiziMakanan.setTotalMinyak(6.0);
         totalGiziMakanan.setTotalKueRp(0.0);
 
         totalGiziMakanan.setTotalEnergi(1275.0);
@@ -117,7 +117,7 @@ public class DaftarTotalGiziMakananFrame extends JFrame {
                     return data.getTotalMadu();
                 }
                 else if(column == 7){
-                    return data.getTotalSantanAtauMinyak();
+                    return data.getTotalMinyak();
                 }
                 else if(column == 8){
                     return data.getTotalKueRp();
