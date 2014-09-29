@@ -201,6 +201,13 @@ public class TotalGiziMakanan {
         public void setSatuanMakanan(String satuanMakanan) {
             this.satuanMakanan = satuanMakanan;
         }
+
+        @Override
+        public String toString() {
+            return namaMakanan + "  " + satuanMakanan + "";
+        }
+        
+        
     }
 
     public static class ContohMakananSehari {

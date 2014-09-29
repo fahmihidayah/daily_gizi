@@ -14,17 +14,21 @@ public class MakananDiKonsumsiReport {
     private Double beratTotal;
     private Double kalori;
     private Double karbohidrat;
+    private Double protein;
+    private Double lemak;
 
-    public MakananDiKonsumsiReport(String bahanMakanan, String waktuMakan, Double beratTotal, Double kalori, Double karbohidrat) {
+    public MakananDiKonsumsiReport(String bahanMakanan, String waktuMakan, Double beratTotal, Double kalori, Double karbohidrat, Double lemak, Double protein) {
         this.bahanMakanan = bahanMakanan;
         this.waktuMakan = waktuMakan;
         this.beratTotal = beratTotal;
         this.kalori = kalori;
         this.karbohidrat = karbohidrat;
+        this.protein = protein;
+        this.lemak = lemak;
     }
     
     public MakananDiKonsumsiReport(MakananDiKonsumsi makananDiKonsumsi){
-        this(makananDiKonsumsi.getBahanMakanan().getNamaBahanMakanan(), makananDiKonsumsi.getWaktuMakan(), makananDiKonsumsi.getBeratTotal(), makananDiKonsumsi.getKalori(), makananDiKonsumsi.getKarbohidrat());
+        this(makananDiKonsumsi.getBahanMakanan().getNamaBahanMakanan(), makananDiKonsumsi.getWaktuMakan(), makananDiKonsumsi.getBeratTotal(), makananDiKonsumsi.getKalori(), makananDiKonsumsi.getKarbohidrat(), makananDiKonsumsi.getLemak(), makananDiKonsumsi.getProtein());
     }
     public String getBahanMakanan() {
         return bahanMakanan;
@@ -64,6 +68,22 @@ public class MakananDiKonsumsiReport {
 
     public void setKarbohidrat(Double karbohidrat) {
         this.karbohidrat = karbohidrat;
+    }
+
+    public Double getProtein() {
+        return protein;
+    }
+
+    public void setProtein(Double protein) {
+        this.protein = protein;
+    }
+
+    public Double getLemak() {
+        return lemak;
+    }
+
+    public void setLemak(Double lemak) {
+        this.lemak = lemak;
     }
     
     

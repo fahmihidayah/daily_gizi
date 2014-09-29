@@ -62,7 +62,7 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
     
     private JPanel getTableMakananDikonsumsiPanel(){
         JPanel panel = new JPanel(new BorderLayout());
-        String [] columnName = {"Nama Makanan", "Jumlah" , "Waktu Makan" , "Total Karbohidrat", "Total Protein", "Total Kalori", "Total Lemak"};
+        String [] columnName = {"Nama Makanan", "Jumlah" , "Waktu Makan" , "Total Karbohidrat", "Total Protein", /*"Total Kalori",*/ "Total Lemak"};
         customTableModelMakananDikonsumsi = new CustomTableModel<MakananDiKonsumsi>() {
 
             @Override
@@ -82,10 +82,10 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
                 else if (column == 4){
                     return data.getProtein()+ "";
                 }
+//                else if (column == 5){
+//                    return data.getKalori()+ "";
+//                }
                 else if (column == 5){
-                    return data.getKalori()+ "";
-                }
-                else if (column == 6){
                     return data.getLemak()+ "";
                 }
                 else {

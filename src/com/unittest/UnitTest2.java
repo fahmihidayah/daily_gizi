@@ -26,12 +26,12 @@ import net.sf.jasperreports.view.JasperViewer;
 public class UnitTest2 {
     public static void main(String args[]) throws JRException{
         ArrayList<MakananDiKonsumsiReport> listMakananDiKonsumsiReports = new ArrayList<>();
-        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "senin", 1.2, 1.3, 1.4));
-        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "senin", 1.2, 1.3, 1.4));
-        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "selasa", 1.2, 1.3, 1.4));
-        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "selasa", 1.2, 1.3, 1.4));
-        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "rabu", 1.2, 1.3, 1.4));
-        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "rabu", 1.2, 1.3, 1.4));
+//        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "senin", 1.2, 1.3, 1.4));
+//        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "senin", 1.2, 1.3, 1.4));
+//        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "selasa", 1.2, 1.3, 1.4));
+//        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "selasa", 1.2, 1.3, 1.4));
+//        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "rabu", 1.2, 1.3, 1.4));
+//        listMakananDiKonsumsiReports.add(new MakananDiKonsumsiReport("abc", "rabu", 1.2, 1.3, 1.4));
         
         ProfilUser profilUser = new ProfilUser();
         profilUser.setNama("Fahmi");

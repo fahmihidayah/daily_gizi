@@ -191,6 +191,7 @@ public class MakanDikonsumsiController extends Observable implements  Constants{
             public void run() {
                 InputStream streamRep;
                 try {
+                    selectedTotalGiziMakanan = DataSingleton.getInstance().getTotalGiziMakanan();
                     streamRep = JRLoader.getFileInputStream("gizi_report.jasper");
                     JRBeanCollectionDataSource jRDataSource = new JRBeanCollectionDataSource(getListMakananDikonsumsiReport());
                     Map<String, Object> map = new HashMap<>();
