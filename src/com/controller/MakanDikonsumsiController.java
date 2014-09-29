@@ -245,11 +245,13 @@ public class MakanDikonsumsiController extends Observable implements  Constants{
                 totalGiziMakanan.setKarbohidrat(totalGiziMakanan.getKarbohidrat()+ makananDikonsumsi.getJumlah());
             }
             // ada tambahan lain
-            totalGiziMakanan.setTotalEnergi(totalGiziMakanan.getTotalEnergi() + makananDikonsumsi.getKalori());
+//            totalGiziMakanan.setTotalEnergi(totalGiziMakanan.getTotalEnergi() + makananDikonsumsi.getKalori());
             totalGiziMakanan.setTotalProtein(totalGiziMakanan.getTotalProtein() + makananDikonsumsi.getProtein());
             totalGiziMakanan.setTotalLemak(totalGiziMakanan.getTotalLemak() + makananDikonsumsi.getLemak());
             totalGiziMakanan.setTotalKarbohidrat(totalGiziMakanan.getTotalKarbohidrat() + makananDikonsumsi.getKarbohidrat());
         }
+        Double energi = totalGiziMakanan.getTotalKarbohidrat() * 4 + totalGiziMakanan.getTotalProtein() * 4 + totalGiziMakanan.getTotalLemak() * 9;
+        totalGiziMakanan.setTotalEnergi(energi);
         
     }
     
