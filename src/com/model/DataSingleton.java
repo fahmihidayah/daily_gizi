@@ -16,6 +16,7 @@ public class DataSingleton {
     private ArrayList<BahanMakanan> listBahanMakanan = new ArrayList<>();
     private ArrayList<Golongan> listGolongan = new ArrayList<>();
     private ArrayList<TotalGiziMakanan> listTotalGiziMakanan = new ArrayList<>();
+    private TotalGiziMakanan totalGiziMakanan = null;
     
     public static DataSingleton getInstance(){
         if(instance == null){
@@ -62,6 +63,13 @@ public class DataSingleton {
     public void setListTotalGiziMakanan(ArrayList<TotalGiziMakanan> listTotalGiziMakanan) {
         this.listTotalGiziMakanan = listTotalGiziMakanan;
     }
-    
+
+    public TotalGiziMakanan getTotalGiziMakanan() {
+        return totalGiziMakanan;
+    }
+
+    public void setTotalGiziMakanan(TotalGiziMakanan totalGiziMakanan) {
+        this.totalGiziMakanan = totalGiziMakanan;
+    }
     
 }

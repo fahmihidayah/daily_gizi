@@ -46,6 +46,32 @@ public class ProfileController extends Observable {
         profilUser.setUmur(Integer.parseInt(editProfileFrame.textFieldUmur.getText()));
         profilUser.hitungBeratBadanRelative();
         
+        Double kaloriHarian = profilUser.getKaloriHarian();
+        if(kaloriHarian <= 1100){
+            DataSingleton.getInstance().setTotalGiziMakanan(DataSingleton.getInstance().getListTotalGiziMakanan().get(0));
+        }
+        else if(kaloriHarian <= 1300){
+            DataSingleton.getInstance().setTotalGiziMakanan(DataSingleton.getInstance().getListTotalGiziMakanan().get(1));
+        }
+        else if(kaloriHarian <= 1500){
+            DataSingleton.getInstance().setTotalGiziMakanan(DataSingleton.getInstance().getListTotalGiziMakanan().get(2));
+        }
+        else if(kaloriHarian <= 1700){
+            DataSingleton.getInstance().setTotalGiziMakanan(DataSingleton.getInstance().getListTotalGiziMakanan().get(3));
+        }
+        else if(kaloriHarian <= 1900){
+            DataSingleton.getInstance().setTotalGiziMakanan(DataSingleton.getInstance().getListTotalGiziMakanan().get(4));
+        }
+        else if(kaloriHarian <= 2100){
+            DataSingleton.getInstance().setTotalGiziMakanan(DataSingleton.getInstance().getListTotalGiziMakanan().get(5));
+        }
+        else if(kaloriHarian <= 2300){
+            DataSingleton.getInstance().setTotalGiziMakanan(DataSingleton.getInstance().getListTotalGiziMakanan().get(6));
+        }
+        else {
+            DataSingleton.getInstance().setTotalGiziMakanan(DataSingleton.getInstance().getListTotalGiziMakanan().get(7));
+        }
+        System.out.println(DataSingleton.getInstance().getTotalGiziMakanan().getNamaDiet());
         JOptionPane.showConfirmDialog(null, "Sukses edit user", "Pesan", JOptionPane.OK_OPTION);
         setChanged();
         notifyObservers();
@@ -78,6 +104,7 @@ public class ProfileController extends Observable {
         totalGiziMakanan.setTotalProtein(41.0);
         totalGiziMakanan.setTotalLemak(30.0);
         totalGiziMakanan.setTotalKarbohidrat(152.0);
+        listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
         totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 1300 Kal");
@@ -90,6 +117,7 @@ public class ProfileController extends Observable {
         totalGiziMakanan.setTotalProtein(45.0);
         totalGiziMakanan.setTotalLemak(35.0);
         totalGiziMakanan.setTotalKarbohidrat(192.0);
+        listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
         totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 1500 Kal");
@@ -102,6 +130,7 @@ public class ProfileController extends Observable {
         totalGiziMakanan.setTotalProtein(51.0);
         totalGiziMakanan.setTotalLemak(36.0);
         totalGiziMakanan.setTotalKarbohidrat(235.0);
+        listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
         totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 1700 Kal");
@@ -114,6 +143,7 @@ public class ProfileController extends Observable {
         totalGiziMakanan.setTotalProtein(55.0);
         totalGiziMakanan.setTotalLemak(36.0);
         totalGiziMakanan.setTotalKarbohidrat(275.0);
+        listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
         totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 1900 Kal");
@@ -126,6 +156,7 @@ public class ProfileController extends Observable {
         totalGiziMakanan.setTotalProtein(59.0);
         totalGiziMakanan.setTotalLemak(46.0);
         totalGiziMakanan.setTotalKarbohidrat(315.0);
+        listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
         totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 2100 Kal");
@@ -138,6 +169,7 @@ public class ProfileController extends Observable {
         totalGiziMakanan.setTotalProtein(64.0);
         totalGiziMakanan.setTotalLemak(53.0);
         totalGiziMakanan.setTotalKarbohidrat(339.0);
+        listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
         totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 2300 Kal");
@@ -150,6 +182,7 @@ public class ProfileController extends Observable {
         totalGiziMakanan.setTotalProtein(75.0);
         totalGiziMakanan.setTotalLemak(63.0);
         totalGiziMakanan.setTotalKarbohidrat(379.0);
+        listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
         totalGiziMakanan.setNamaDiet("Standar Diet Diabetes Militus 2500 Kal");
@@ -162,7 +195,7 @@ public class ProfileController extends Observable {
         totalGiziMakanan.setTotalProtein(87.0);
         totalGiziMakanan.setTotalLemak(69.0);
         totalGiziMakanan.setTotalKarbohidrat(413.0);
-        
+        listTotalGiziMakanan.add(totalGiziMakanan);
         
     }
 }
