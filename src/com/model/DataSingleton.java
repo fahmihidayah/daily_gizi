@@ -15,7 +15,7 @@ public class DataSingleton {
     private ProfilUser profilUser = new ProfilUser();
     private ArrayList<BahanMakanan> listBahanMakanan = new ArrayList<>();
     private ArrayList<Golongan> listGolongan = new ArrayList<>();
-
+    private ArrayList<TotalGiziMakanan> listTotalGiziMakanan = new ArrayList<>();
     
     public static DataSingleton getInstance(){
         if(instance == null){
@@ -53,6 +53,14 @@ public class DataSingleton {
 
     public void setProfilUser(ProfilUser profilUser) {
         this.profilUser = profilUser;
+    }
+
+    public ArrayList<TotalGiziMakanan> getListTotalGiziMakanan() {
+        return listTotalGiziMakanan;
+    }
+
+    public void setListTotalGiziMakanan(ArrayList<TotalGiziMakanan> listTotalGiziMakanan) {
+        this.listTotalGiziMakanan = listTotalGiziMakanan;
     }
     
     
