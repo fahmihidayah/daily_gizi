@@ -4,6 +4,7 @@
  */
 package com.controller;
 
+import com.framework.JasperReportHandler;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
@@ -41,12 +42,11 @@ import org.olap4j.impl.ArrayNamedListImpl;
  *
  * @author fahmi
  */
-public class MakanDikonsumsiController extends Observable implements  Constants{
+public class MakanDikonsumsiController extends Observable implements Constants {
 
     private JdbcConnectionSource jdbcConnectionSource;
     private TotalGiziMakanan totalGiziMakanan = new TotalGiziMakanan();
     private TotalGiziMakanan selectedTotalGiziMakanan = null;
-    
 //    private Dao<BahanMakanan, Long> daoBahanMakanan;
 //    private Dao<Golongan, Long> daoGolongan;
     private List<BahanMakanan> listBahanMakanan;
@@ -56,7 +56,6 @@ public class MakanDikonsumsiController extends Observable implements  Constants{
     private BahanMakanan currentBahanMakanan = null;
     private MakananDiKonsumsi currentMakananDiKonsumsi = null;
 
-    
     public MakanDikonsumsiController(ProfilUser profilUser) throws SQLException {
         jdbcConnectionSource = new JdbcConnectionSource(databaseUrl);
 //        daoBahanMakanan = DaoManager.createDao(jdbcConnectionSource, BahanMakanan.class);
@@ -203,22 +202,42 @@ public class MakanDikonsumsiController extends Observable implements  Constants{
                     map.put("TOTAL_KARBOHIDRAT_DIET", selectedTotalGiziMakanan.getTotalKarbohidrat());
                     map.put("TOTAL_LEMAK_DIET", selectedTotalGiziMakanan.getTotalLemak());
                     map.put("TOTAL_ENERGI_DIET", selectedTotalGiziMakanan.getTotalEnergi());
-                    
+
                     map.put("TOTAL_PROTEIN_USER", totalGiziMakanan.getTotalProtein());
                     map.put("TOTAL_KARBOHIDRAT_USER", totalGiziMakanan.getTotalKarbohidrat());
                     map.put("TOTAL_LEMAK_USER", totalGiziMakanan.getTotalLemak());
                     map.put("TOTAL_ENERGI_USER", totalGiziMakanan.getTotalEnergi());
+//                    
+
+                    JasperReportHandler jasperReportHandler = new JasperReportHandler("gizi_report.jasper", listMakananDikonsumsi);
+
+                    jasperReportHandler.putParameter("PROFILE_USER", profilUser.toString());
+                    jasperReportHandler.putParameter("TYPE_DIET", selectedTotalGiziMakanan.getNamaDiet());
+                    jasperReportHandler.putParameter("TOTAL_PROTEIN_DIET", selectedTotalGiziMakanan.getTotalProtein());
+                    jasperReportHandler.putParameter("TOTAL_KARBOHIDRAT_DIET", selectedTotalGiziMakanan.getTotalKarbohidrat());
+                    jasperReportHandler.putParameter("TOTAL_LEMAK_DIET", selectedTotalGiziMakanan.getTotalLemak());
+                    jasperReportHandler.putParameter("TOTAL_ENERGI_DIET", selectedTotalGiziMakanan.getTotalEnergi());
+
+                    jasperReportHandler.putParameter("TOTAL_PROTEIN_USER", totalGiziMakanan.getTotalProtein());
+                    jasperReportHandler.putParameter("TOTAL_KARBOHIDRAT_USER", totalGiziMakanan.getTotalKarbohidrat());
+                    jasperReportHandler.putParameter("TOTAL_LEMAK_USER", totalGiziMakanan.getTotalLemak());
+                    jasperReportHandler.putParameter("TOTAL_ENERGI_USER", totalGiziMakanan.getTotalEnergi());
                     
+                    JasperReportHandler jsHanlde2 = new JasperReportHandler("gizi_standar_dm.jasper", selectedTotalGiziMakanan.getListContohMakananSehari());
                     
+                    jsHanlde2.putParameter("NAMA_DIET", selectedTotalGiziMakanan.getNamaDiet());
+                    jsHanlde2.putParameter("KANDUNGAN_GIZI", selectedTotalGiziMakanan.getkandunganGizi());
+                    jsHanlde2.putParameter("TOTAL_BAHAN_MAKANAN", selectedTotalGiziMakanan.getTotalBahanMakanan());
+
+                    jasperReportHandler.margeJasperPrint(jsHanlde2, 0);
                     
-                    
-                    JasperPrint report = JasperFillManager.fillReport(streamRep, map, jRDataSource);
-                    
-                    JasperViewer jv = new JasperViewer(report, false);
-                    
-                    jv.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    jv.setVisible(true);
-                    
+//                    JasperPrint report = JasperFillManager.fillReport(streamRep, map, jRDataSource);
+//                    
+//                    JasperViewer jv = new JasperViewer(report, false);
+//                    
+//                    jv.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//                    jv.setVisible(true);
+
                 } catch (JRException ex) {
                     Logger.getLogger(MakanDikonsumsiController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -235,15 +254,14 @@ public class MakanDikonsumsiController extends Observable implements  Constants{
         }
         return listMakananDiKonsumsiReports;
     }
-    
-    public void hitungTotalNutrisi(){
+
+    public void hitungTotalNutrisi() {
         totalGiziMakanan = new TotalGiziMakanan();
         for (MakananDiKonsumsi makananDikonsumsi : listMakananDikonsumsi) {
-            if(getNamaGolongan(makananDikonsumsi).equalsIgnoreCase(BUAH)){
+            if (getNamaGolongan(makananDikonsumsi).equalsIgnoreCase(BUAH)) {
                 totalGiziMakanan.setBuah(totalGiziMakanan.getBuah() + makananDikonsumsi.getJumlah());
-            }
-            else if(getNamaGolongan(makananDikonsumsi).equalsIgnoreCase(KARBOHIDRAT)){
-                totalGiziMakanan.setKarbohidrat(totalGiziMakanan.getKarbohidrat()+ makananDikonsumsi.getJumlah());
+            } else if (getNamaGolongan(makananDikonsumsi).equalsIgnoreCase(KARBOHIDRAT)) {
+                totalGiziMakanan.setKarbohidrat(totalGiziMakanan.getKarbohidrat() + makananDikonsumsi.getJumlah());
             }
             // ada tambahan lain
 //            totalGiziMakanan.setTotalEnergi(totalGiziMakanan.getTotalEnergi() + makananDikonsumsi.getKalori());
@@ -253,14 +271,14 @@ public class MakanDikonsumsiController extends Observable implements  Constants{
         }
         Double energi = totalGiziMakanan.getTotalKarbohidrat() * 4 + totalGiziMakanan.getTotalProtein() * 4 + totalGiziMakanan.getTotalLemak() * 9;
         totalGiziMakanan.setTotalEnergi(energi);
-        
+
     }
-    
-    public String getKeteranganNutrisi(){
+
+    public String getKeteranganNutrisi() {
         return totalGiziMakanan.toString();
     }
-    
-    private String getNamaGolongan(MakananDiKonsumsi makananDiKonsumsi){
+
+    private String getNamaGolongan(MakananDiKonsumsi makananDiKonsumsi) {
         return makananDiKonsumsi.getBahanMakanan().getGolongan().getNamaGolongan();
     }
 //    public void loadListBahanMakanan() {

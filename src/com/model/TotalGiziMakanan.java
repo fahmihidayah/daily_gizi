@@ -5,13 +5,17 @@
 package com.model;
 
 import static com.model.Constants.decimalFormat;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
+ * yang dilewatkan ke report :
+ * NAMA_DIET
+ * KANDUNGAN_GIZI
+ * TOTAL_BAHAN_MAKANAN
  * @author fahmi
  */
-public class TotalGiziMakanan {
+public class TotalGiziMakanan implements  Serializable{
 
     private String namaDiet;
     private Double jenisEnergi = 0.0;
@@ -204,7 +208,7 @@ public class TotalGiziMakanan {
 
         @Override
         public String toString() {
-            return namaMakanan + "  " + satuanMakanan + "";
+            return namaMakanan + " - " + satuanMakanan + "";
         }
         
         
@@ -213,6 +217,7 @@ public class TotalGiziMakanan {
     public static class ContohMakananSehari {
 
         private String waktu;
+        private String bahan;
         private Double berat;
         private Double urt;
         private String satuanUrt;
@@ -276,8 +281,17 @@ public class TotalGiziMakanan {
             this.contohMenu = contohMenu;
         }
 
-        public ContohMakananSehari(String waktu, Double berat, Double urt, String satuanUrt, Double penukar, String satuanPenukar, String contohMenu) {
+        public String getBahan() {
+            return bahan;
+        }
+
+        public void setBahan(String bahan) {
+            this.bahan = bahan;
+        }
+
+        public ContohMakananSehari(String waktu, String bahan, Double berat, Double urt, String satuanUrt, Double penukar, String satuanPenukar, String contohMenu) {
             this.waktu = waktu;
+            this.bahan = bahan;
             this.berat = berat;
             this.urt = urt;
             this.satuanUrt = satuanUrt;
@@ -285,5 +299,19 @@ public class TotalGiziMakanan {
             this.satuanPenukar = satuanPenukar;
             this.contohMenu = contohMenu;
         }
+
+        
+    }
+    
+    public String getTotalBahanMakanan(){
+        String retVal = "";
+        for (AcuanMakananSehari acuanMakananSehari : listAcuanMakanaSehari) {
+            retVal += acuanMakananSehari.toString() + "\n";
+        }
+        return retVal;
+    }
+    
+    public String getkandunganGizi(){
+        return "Protein - " + totalProtein + " g, Lemak - " + totalLemak + " g, Karbohidrat - " + totalKarbohidrat + " g";   
     }
 }

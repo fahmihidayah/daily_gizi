@@ -114,6 +114,9 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Buah", "4 penukar buah"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Minyak", "3 penukar minyak"));
         
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Bubur", 200.0, 1.0, "gelas" , 0.5, "Karbohidrat", "bubur ayam"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Ayam tanpa Kulit", 40.0, 1.0, "potong sedang" , 1.0, "Protein hewani rendah lemak", "sup oyong + jamur"));
+        
         listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
@@ -137,6 +140,8 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Buah", "4 penukar buah"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Minyak", "4 penukar minyak"));
         
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Bubur", 200.0, 1.0, "gelas" , 0.5, "Karbohidrat", "bubur ayam"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Ayam tanpa Kulit", 40.0, 1.0, "potong sedang" , 1.0, "Protein hewani rendah lemak", "sup oyong + jamur"));
         listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
@@ -159,6 +164,8 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Buah", "4 penukar buah"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Minyak", "4 penukar minyak"));
         
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Bubur", 200.0, 1.0, "gelas" , 0.5, "Karbohidrat", "bubur ayam"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Ayam tanpa Kulit", 40.0, 1.0, "potong sedang" , 1.0, "Protein hewani rendah lemak", "sup oyong + jamur"));
         listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
@@ -181,6 +188,8 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Buah", "4 penukar buah"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Minyak", "4 penukar minyak"));
         
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Bubur", 200.0, 1.0, "gelas" , 0.5, "Karbohidrat", "bubur ayam"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Ayam tanpa Kulit", 40.0, 1.0, "potong sedang" , 1.0, "Protein hewani rendah lemak", "sup oyong + jamur"));
         listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
@@ -204,6 +213,8 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Buah", "4 penukar buah"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Minyak", "6 penukar minyak"));
         
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Bubur", 200.0, 1.0, "gelas" , 0.5, "Karbohidrat", "bubur ayam"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Ayam tanpa Kulit", 40.0, 1.0, "potong sedang" , 1.0, "Protein hewani rendah lemak", "sup oyong + jamur"));
         listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
@@ -225,6 +236,8 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Sayur B", "2 penukar sayuran"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Buah", "4 penukar buah"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Minyak", "7 penukar minyak"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Bubur", 200.0, 1.0, "gelas" , 0.5, "Karbohidrat", "bubur ayam"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Ayam tanpa Kulit", 40.0, 1.0, "potong sedang" , 1.0, "Protein hewani rendah lemak", "sup oyong + jamur"));
         listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
@@ -247,6 +260,8 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Buah", "4 penukar buah"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Susu Tanpa Lemak", "1 penukar susu"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Minyak", "7 penukar minyak"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Bubur", 200.0, 1.0, "gelas" , 0.5, "Karbohidrat", "bubur ayam"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Ayam tanpa Kulit", 40.0, 1.0, "potong sedang" , 1.0, "Protein hewani rendah lemak", "sup oyong + jamur"));
         listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
@@ -270,6 +285,8 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Buah", "4 penukar buah"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Susu Tanpa Lemak", "1 penukar susu"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Minyak", "7 penukar minyak"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Bubur", 200.0, 1.0, "gelas" , 0.5, "Karbohidrat", "bubur ayam"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Ayam tanpa Kulit", 40.0, 1.0, "potong sedang" , 1.0, "Protein hewani rendah lemak", "sup oyong + jamur"));
         listTotalGiziMakanan.add(totalGiziMakanan);
         
     }

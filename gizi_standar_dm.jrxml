@@ -1,19 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="gizi_standar_dm" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e1d13ab-80b5-4b96-981f-dc15f34129b1">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NAMA_DIET" class="java.lang.String"/>
+	<parameter name="KANDUNGAN_GIZI" class="java.lang.String"/>
+	<parameter name="TOTAL_BAHAN_MAKANAN" class="java.lang.String"/>
+	<field name="waktu" class="java.lang.String"/>
+	<field name="berat" class="java.lang.String"/>
+	<field name="urt" class="java.lang.String"/>
+	<field name="satuanUrt" class="java.lang.String"/>
+	<field name="penukar" class="java.lang.String"/>
+	<field name="satuanPenukar" class="java.lang.String"/>
+	<field name="contohMenu" class="java.lang.String"/>
+	<field name="bahan" class="java.lang.String"/>
+	<group name="group1">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="28">
+				<textField>
+					<reportElement x="0" y="4" width="555" height="20" uuid="4db933f7-5091-4d2a-960c-36b6a98f4a1f"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{waktu}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="31cbd442-d756-48b1-8e11-1df60a26a489"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NAMA_DIET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="26" width="555" height="20" uuid="382d1192-1e92-4805-8db2-92763f7d8fdc"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{KANDUNGAN_GIZI}]]></textFieldExpression>
+			</textField>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="157" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="4" width="555" height="20" uuid="b228d186-af88-4ef1-a790-340d972512f6"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total kebutuhan bahan makanan sehari-hari]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="24" width="555" height="133" uuid="27f8bed6-b61c-4ea2-b6d2-995b0f9b5cb3"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL_BAHAN_MAKANAN}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="16f5f4cb-09f3-4a2d-8d98-c8cd227caf11"/>
+				<text><![CDATA[Bahan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="117" y="0" width="73" height="20" uuid="3bf22884-20bc-48f0-a44d-e808dbf41106"/>
+				<text><![CDATA[Berat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="73" height="20" uuid="fd3e63d5-3bb8-4f0e-97fa-b3d141c0f5bf"/>
+				<text><![CDATA[Urt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="0" width="73" height="20" uuid="34137b75-03b6-441c-83ee-19ba19a869e2"/>
+				<text><![CDATA[Penukar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="0" width="134" height="20" uuid="cf08577c-587d-4f94-9760-26d2369dcc50"/>
+				<text><![CDATA[Contoh  Menu]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="2" width="100" height="20" uuid="b5f37fe7-0918-453e-b197-895ef993f5d8"/>
+				<textFieldExpression><![CDATA[$F{bahan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="2" width="73" height="20" uuid="c6628761-5ac0-432d-8889-b296ead8c8ce"/>
+				<textFieldExpression><![CDATA[$F{berat} + " g"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="2" width="73" height="20" uuid="5a77b31d-a220-4eba-93d3-0a85a76111c4"/>
+				<textFieldExpression><![CDATA[$F{urt} + " " + $F{satuanUrt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="2" width="73" height="20" uuid="15e9afc9-cd3f-46fd-808d-43e2903e8646"/>
+				<textFieldExpression><![CDATA[$F{penukar} + " " + $F{satuanPenukar} ]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="2" width="134" height="20" uuid="5f5ae904-9aab-47fe-9f9b-bc737ba531fb"/>
+				<textFieldExpression><![CDATA[$F{contohMenu}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
