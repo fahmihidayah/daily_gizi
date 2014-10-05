@@ -159,6 +159,7 @@ public class MakananDiKonsumsi {
      * @return 
      */
     private Double hitungKandungan(Double kandungan){
-        return  kandungan * this.jumlah / this.bahanMakanan.getSatuanPenukar();
+        
+        return  kandungan * this.jumlah / ((this.bahanMakanan.getSatuanPenukar() == 0)? 1: this.bahanMakanan.getSatuanPenukar());
     }
 }

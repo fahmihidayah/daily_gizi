@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="gizi_standar_dm" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e1d13ab-80b5-4b96-981f-dc15f34129b1">
-	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.zoom" value="1.210000000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="121"/>
 	<parameter name="NAMA_DIET" class="java.lang.String"/>
 	<parameter name="KANDUNGAN_GIZI" class="java.lang.String"/>
 	<parameter name="TOTAL_BAHAN_MAKANAN" class="java.lang.String"/>
@@ -14,12 +14,12 @@
 	<field name="satuanPenukar" class="java.lang.String"/>
 	<field name="contohMenu" class="java.lang.String"/>
 	<field name="bahan" class="java.lang.String"/>
-	<group name="group1">
-		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+	<group name="waktu">
+		<groupExpression><![CDATA[$F{waktu}]]></groupExpression>
 		<groupHeader>
-			<band height="28">
+			<band height="22">
 				<textField>
-					<reportElement x="0" y="4" width="555" height="20" uuid="4db933f7-5091-4d2a-960c-36b6a98f4a1f"/>
+					<reportElement x="0" y="0" width="555" height="20" uuid="158ecbc1-0f02-4dd9-93ec-a3c6e7349c6e"/>
 					<textElement textAlignment="Center">
 						<font isBold="true"/>
 					</textElement>
@@ -28,7 +28,7 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="50"/>
+			<band height="3"/>
 		</groupFooter>
 	</group>
 	<background>
@@ -110,7 +110,7 @@
 			</textField>
 			<textField>
 				<reportElement x="305" y="2" width="73" height="20" uuid="15e9afc9-cd3f-46fd-808d-43e2903e8646"/>
-				<textFieldExpression><![CDATA[$F{penukar} + " " + $F{satuanPenukar} ]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{penukar} + " " + $F{satuanPenukar}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="421" y="2" width="134" height="20" uuid="5f5ae904-9aab-47fe-9f9b-bc737ba531fb"/>
