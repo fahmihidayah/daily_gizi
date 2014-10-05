@@ -260,10 +260,6 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Malam", "Minyak", 5.0, 1.0, "sendok teh" , 1.0, "Minyak", ""));
         
         
-        
-        
-        
-        
         listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
@@ -287,8 +283,26 @@ public class ProfileController extends Observable {
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Buah", "4 penukar buah"));
         totalGiziMakanan.getListAcuanMakanaSehari().add(new TotalGiziMakanan.AcuanMakananSehari("Minyak", "6 penukar minyak"));
         
-        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Bubur", 200.0, 1.0, "gelas" , 0.5, "Karbohidrat", "bubur ayam"));
-        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Ayam tanpa Kulit", 40.0, 1.0, "potong sedang" , 1.0, "Protein hewani rendah lemak", "sup oyong + jamur"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Nasi", 200.0, 1.5, "gelas" , 2.0, "Karbohidrat", "Nasi"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Telur ayam", 55.0, 1.0, "butir" , 1.0, "hewani", "telur dadar"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Kacang tolo", 20.0, 2.0, "sendok makan" , 0.5, "nabati", "tumis kacang tolo"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Sayuan A", 0.0, 0.0, "sekehendak" , 0.0, "", ""));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Pagi", "Minyak", 10.0, 2.0, "sendok teh" , 2.0, "minyak", "Sup labu kuning"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Snack Pagi", "Buah", 70.0, 1.0, "potong sedang" , 1.0, "buah", "Jus blewahs"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Siang", "Nasi", 200.0, 1.5, "gelas" , 2.0, "Karbohidrat", "Nasi"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Siang", "Ikan", 40.0, 1.0, "potong sedang" , 1.0, "hewani", "Mangut ikan"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Siang", "Tempe", 50.0, 2.0, "potong sedang" , 1.0, "nabati", "tempe mendoan"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Siang", "Sayuran B", 100.0, 1.0, "gelas" , 1.0, "sayuran", "sayur asem"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Siang", "Buah", 95.0, 0.25, "buah sedang" , 1.0, "buah", "nanas"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Siang", "Minyak", 10.0, 2.0, "sendok teh" , 2.0, "minyak", ""));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Snack Sore", "Buah", 165.0, 20.0, "buah sedang" , 1.0, "buah", "anggur"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Malam", "Nasi", 200.0, 1.5, "gelas" , 2.0, "Karbohidrat", "Nasi"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Malam", "Ayam tanpa kulit", 40.0, 1.0, "potong sedang" , 1.0, "hewani", "ayam goreng"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Malam", "Tahu", 110.0, 1.0, "biji besar" , 1.0, "nabati", "tahu masak jamur"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Malam", "Sayuran B", 100.0, 1.0, "gelas" , 1.0, "sayuran", "Tumis kembang kol"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Malam", "Buah", 110.0, 1.0, "potong besar" , 1.0, "buah", "pepaya"));
+        totalGiziMakanan.getListContohMakananSehari().add(new TotalGiziMakanan.ContohMakananSehari("Malam", "Minyak", 10.0, 2.0, "sendok teh" , 2.0, "minyak", ""));
+
         listTotalGiziMakanan.add(totalGiziMakanan);
         
         totalGiziMakanan = new TotalGiziMakanan();
