@@ -5,10 +5,12 @@
 package com.sview;
 
 import com.controller.ProfileController;
+import com.custom.CustomJButton;
 import com.framework.PanelUtilities;
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -40,7 +42,7 @@ public class EditProfileFrame extends JFrame {
         textFieldTinggiBadan = new JTextField();
         textFieldUmur = new JTextField();
         comboBoxJenisKelamin = new JComboBox<>(jenisKelamin);
-        buttonSave = new JButton("Simpan");
+        buttonSave = new CustomJButton("Simpan");
     }
 
     public EditProfileFrame(ProfileController profileController) {
@@ -51,11 +53,14 @@ public class EditProfileFrame extends JFrame {
         setVisible(true);
         initialComponent();
         getInputPanel();
+        getContentPane().setBackground(Color.GREEN);
         add(getMainPanel());
     }
 
     private JPanel getMainPanel() {
+        
         JPanel panel = new JPanel(new BorderLayout());
+        panel.setBackground(Color.GREEN);
         panel.add(getInputPanel(), BorderLayout.CENTER);
         panel.add(getButtonPanel(), BorderLayout.SOUTH);
         return panel;

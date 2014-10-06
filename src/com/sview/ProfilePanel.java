@@ -5,6 +5,7 @@
 package com.sview;
 
 import com.controller.ProfileController;
+import com.custom.CustomJButton;
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
 import java.awt.BorderLayout;
@@ -63,7 +64,7 @@ public class ProfilePanel extends JPanel implements  Observer{
     
     public JPanel getButtonPanel(){
         JPanel panel = new JPanel(new FlowLayout());
-        buttonEdit = new JButton("Edit");
+        buttonEdit = new CustomJButton("Edit");
         buttonEdit.addActionListener(new ActionListener() {
 
             @Override

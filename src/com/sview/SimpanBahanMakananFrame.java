@@ -5,6 +5,7 @@
 package com.sview;
 
 import com.controller.BahanMakananController;
+import com.custom.CustomJButton;
 import com.j256.ormlite.dao.Dao;
 import com.model.BahanMakanan;
 import com.model.Constants;
@@ -119,7 +120,7 @@ public class SimpanBahanMakananFrame extends JFrame implements Constants {
 
     private JPanel getButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout());
-        JButton buttonSimpan = new JButton("Simpan");
+        JButton buttonSimpan = new CustomJButton("Simpan");
 
         buttonSimpan.addActionListener(new ActionListener() {
             @Override

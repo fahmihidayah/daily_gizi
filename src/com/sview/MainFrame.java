@@ -10,7 +10,10 @@ import com.controller.ProfileController;
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.HeadlessException;
+import static java.awt.image.ImageObserver.WIDTH;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,11 +32,11 @@ public class MainFrame extends JFrame{
     private BahanMakananController bahanMakananController;
     private MakanDikonsumsiController makanDikonsumsiController;
     private ProfileController profileController = new ProfileController();
-
+ 
     public MainFrame()  {
         setTitle("Manajemen Gizi Harian Untuk Penderita Diabetes");
         setSize(800, 500);
-        setVisible(true);
+        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         try {
             bahanMakananController = new BahanMakananController();
@@ -43,17 +46,23 @@ public class MainFrame extends JFrame{
         }
         
         mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setBackground(Color.GREEN);
         add(mainPanel);
-        
         setMainTabbedPane();
+        setVisible(true);
     }
     
     private void setMainTabbedPane(){
         mainTabbedPane = new JTabbedPane();
+        mainTabbedPane.setBackground(Color.GREEN);
         
-        mainTabbedPane.add("Profil Pengguna",  new ProfilePanel(profileController));
+        JPanel profilepanel = new ProfilePanel(profileController);
+        mainTabbedPane.add("Profil Pengguna",  profilepanel);
         mainTabbedPane.add("Daftar Makanan" , new BahanMakananPanel(bahanMakananController));
         mainTabbedPane.add("Analisa Konsumsi Kalori Hari ini", new AnalisaKaloriPanel(bahanMakananController, makanDikonsumsiController, profileController));
+        mainTabbedPane.setForegroundAt(0, Color.BLUE);
+        mainTabbedPane.setForegroundAt(1, Color.BLUE);
+        mainTabbedPane.setForegroundAt(2, Color.BLUE);
         mainPanel.add(mainTabbedPane, BorderLayout.CENTER);
     }
     

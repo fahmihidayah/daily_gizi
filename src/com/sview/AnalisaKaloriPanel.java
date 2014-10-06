@@ -7,6 +7,8 @@ package com.sview;
 import com.controller.BahanMakananController;
 import com.controller.MakanDikonsumsiController;
 import com.controller.ProfileController;
+import com.custom.CusomJPanel;
+import com.custom.CustomJButton;
 import com.framework.CustomTableModel;
 import com.model.Constants;
 import static com.model.Constants.UPDATE_MODE;
@@ -14,7 +16,9 @@ import com.model.MakananDiKonsumsi;
 import com.model.ProfilUser;
 import com.oracle_source.layout.SpringUtilities;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,7 +43,7 @@ import net.sf.jasperreports.engine.JRException;
  *
  * @author fahmi
  */
-public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
+public class AnalisaKaloriPanel extends CusomJPanel implements Observer, Constants{
     JTable tableMakananDikonsumsi ;
     JLabel labelKeterangan; 
     CustomTableModel<MakananDiKonsumsi> customTableModelMakananDikonsumsi;
@@ -61,7 +65,7 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
     }
     
     private JPanel getTableMakananDikonsumsiPanel(){
-        JPanel panel = new JPanel(new BorderLayout());
+        JPanel panel = new CusomJPanel(new BorderLayout());
         String [] columnName = {"Nama Makanan", "Jumlah" , "Waktu Makan" , "Total Karbohidrat", "Total Protein", /*"Total Kalori",*/ "Total Lemak"};
         customTableModelMakananDikonsumsi = new CustomTableModel<MakananDiKonsumsi>() {
 
@@ -111,7 +115,7 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
         JScrollPane scrollPane = new JScrollPane(tableMakananDikonsumsi);
         panel.add(scrollPane, BorderLayout.CENTER);
         
-        JButton buttonTambah = new JButton("Tambah");
+        JButton buttonTambah = new CustomJButton("Tambah");
         buttonTambah.addActionListener(new ActionListener() {
 
             @Override
@@ -120,7 +124,7 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
                 SimpanMakananDikonsumsiFrame simpanMakananDikonsumsiFrame = new SimpanMakananDikonsumsiFrame(makanDikonsumsiController, INSERT_MODE, -1);
             }
         });
-        JButton buttonHapus = new JButton("Hapus");
+        JButton buttonHapus = new CustomJButton("Hapus");
         buttonHapus.addActionListener(new ActionListener() {
 
             @Override
@@ -164,7 +168,7 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
 //        keteranganPanel.add(panelButton, BorderLayout.SOUTH);
         
         JPanel priviewPanel = new JPanel(new FlowLayout());
-        JButton buttonPriviewPanel = new JButton("Priveiew Report");
+        JButton buttonPriviewPanel = new CustomJButton("Priveiew Report");
         buttonPriviewPanel.addActionListener(new ActionListener() {
 
             @Override
@@ -185,6 +189,12 @@ public class AnalisaKaloriPanel extends JPanel implements Observer, Constants{
         customTableModelMakananDikonsumsi.filter("", 0);
         makanDikonsumsiController.hitungTotalNutrisi();
         labelKeterangan.setText(makanDikonsumsiController.getKeteranganNutrisi());
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        g.setColor(Color.RED);
+//        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -5,6 +5,7 @@
 package com.sview;
 
 import com.controller.MakanDikonsumsiController;
+import com.custom.CustomJButton;
 import com.framework.CustomTableModel;
 import com.model.BahanMakanan;
 import com.model.Constants;
@@ -165,7 +166,7 @@ public class SimpanMakananDikonsumsiFrame extends  JFrame implements  Constants{
         panel.add(panelJumlan);
         
         JPanel panelSimpanButton = new JPanel(new FlowLayout());
-        JButton buttonSimpan = new JButton("Simpan");
+        JButton buttonSimpan = new CustomJButton("Simpan");
         buttonSimpan.addActionListener(new ActionListener() {
 
             @Override

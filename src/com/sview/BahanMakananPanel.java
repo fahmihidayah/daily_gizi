@@ -5,6 +5,7 @@
 package com.sview;
 
 import com.controller.BahanMakananController;
+import com.custom.CustomJButton;
 import com.framework.CustomTableModel;
 import com.framework.PanelUtilities;
 import com.model.BahanMakanan;
@@ -142,7 +143,7 @@ public class BahanMakananPanel extends JPanel implements Constants, Observer {
 
     private JPanel getButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout());
-        JButton buttonAdd = new JButton("Tambah");
+        JButton buttonAdd = new CustomJButton("Tambah");
         buttonAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -157,7 +158,7 @@ public class BahanMakananPanel extends JPanel implements Constants, Observer {
 //                
 //            }
 //        });
-        JButton buttonHapus = new JButton("Hapus");
+        JButton buttonHapus = new CustomJButton("Hapus");
         buttonHapus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
